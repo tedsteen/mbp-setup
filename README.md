@@ -24,7 +24,7 @@ brew install docker-machine
 echo "export BLOCKSIZE=1k" >> ~/.bash_profile
 
 
-echo "alias cp='cp -hal'" >> ~/.bash_profile
+echo "alias ls='ls -hal'" >> ~/.bash_profile
 echo "alias mkdir='mkdir -pv'" >> ~/.bash_profile
 
 
