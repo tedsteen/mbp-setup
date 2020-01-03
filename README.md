@@ -1,6 +1,6 @@
 # My environment
 
-provisioning
+## generic provisioning
 ```bash
 echo "Install https://www.iterm2.com/"
 
@@ -19,7 +19,7 @@ brew install docker
 brew install docker-machine
 
 brew install bash-completion
-#Before doing the following bash-completion stuff check if it already works..
+# Before doing the following bash-completion stuff check if it already works..
 echo "[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion" >> ~/.bash_profile
 ln -s /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion /usr/local/etc/bash_completion.d/docker
 ln -s /Applications/Docker.app/Contents/Resources/etc/docker-machine.bash-completion /usr/local/etc/bash_completion.d/docker-machine
@@ -29,8 +29,27 @@ echo "export BLOCKSIZE=1k" >> ~/.bash_profile
 
 echo "alias ls='ls -hal'" >> ~/.bash_profile
 echo "alias mkdir='mkdir -pv'" >> ~/.bash_profile
+```
 
+## Java
+```bash
 curl -s "https://get.sdkman.io" | bash
 sdk i java
 launchctl setenv JAVA_HOME ~/.sdkman/candidates/java/current
+```
+
+## react native
+```bash
+yarn global add react-native-cli
+# setup android sdk
+```
+
+## android sdk
+```bash
+brew cask install android-sdk
+echo "export ANDROID_HOME=/usr/local/share/android-sdk" >> ~/.bash_profile
+source ~/.bash_profile
+
+sdkmanager --update
+sdkmanager "platform-tools" "platforms;android-28"
 ```
