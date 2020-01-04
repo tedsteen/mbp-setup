@@ -88,7 +88,7 @@ yarn global add react-native-cli
 ```bash
 brew cask install android-sdk
 echo "export ANDROID_HOME=/usr/local/share/android-sdk" >> ~/.zshrc
-source ~/.bash_profile
+source ~/.zshrc
 
 sdkmanager --update
 sdkmanager "platform-tools" "platforms;android-28"
