@@ -1,53 +1,88 @@
 # My environment
 
 ## generic provisioning
-```bash
-echo "Install https://www.iterm2.com/"
+# Read https://medium.com/@tretuna/macbook-pro-web-developer-setup-from-clean-slate-to-dev-machine-1befd4121ba8
+# and https://dev.to/oryanmoshe/i-spend-one-hour-a-week-optimizing-my-development-environment-l9a
+# and then basically do the following..
 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-echo 'export PATH="/usr/local/sbin:$PATH"' >> ~/.bash_profile
-brew update
-brew upgrade
+# Upgrade macOS to latest everything
+xcode-select --install
+# Upgrade macOS to latest everything again
 
-brew install git
+# Install homebrew
+# https://brew.sh
+
+# Fonts for iterm2 and other code things
+brew tap homebrew/cask-fonts && brew cask install font-source-code-pro
+
+# Apps
+brew cask install \
+alfred \
+atom \
+bettertouchtool \
+google-backup-and-sync \
+google-chrome \
+dashlane \
+discord \
+docker \
+intellij-idea \
+iterm2  \
+signal \
+slack \
+ticktick \
+transmission \
+spotify \
+viscosity \
+vlc
+
+# Quick look plugins
+brew cask install \
+qlcolorcode \
+qlstephen \
+qlmarkdown \
+quicklook-json \
+qlprettypatch \
+quicklook-csv \
+webpquicklook \
+suspicious-package
+
+# Follow this guide https://gist.github.com/kevin-smets/8568070#file-iterm2-solarized-md
+# and then add docker to .zshrc plugins
 
 git config --global user.name "Ted Steen"
 git config --global user.email "ted.steen@gmail.com"
 git config --global color.ui auto
 
-brew install docker
-brew install docker-machine
+# Java SDKs
+# see https://stackoverflow.com/questions/52524112/how-do-i-install-java-on-mac-osx-allowing-version-switching/52524114#52524114
+# But in the end it's this:
 
-brew install bash-completion
-# Before doing the following bash-completion stuff check if it already works..
-echo "[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion" >> ~/.bash_profile
-ln -s /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion /usr/local/etc/bash_completion.d/docker
-ln -s /Applications/Docker.app/Contents/Resources/etc/docker-machine.bash-completion /usr/local/etc/bash_completion.d/docker-machine
-ln -s /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion /usr/local/etc/bash_completion.d/docker-compose
+brew tap adoptopenjdk/openjdk && brew cask install \
+adoptopenjdk8 \
+adoptopenjdk11 \
+adoptopenjdk13
 
-echo "export BLOCKSIZE=1k" >> ~/.bash_profile
+# To list all available versions
+/usr/libexec/java_home -V
 
-echo "alias ls='ls -hal'" >> ~/.bash_profile
-echo "alias mkdir='mkdir -pv'" >> ~/.bash_profile
-```
+# Make it easy to switch
+echo "alias java8='export JAVA_HOME=$(/usr/libexec/java_home -v1.8)'" >> ~/.zshrc
+echo "alias java11='export JAVA_HOME=$(/usr/libexec/java_home -v11)'" >> ~/.zshrc
+echo "alias java13='export JAVA_HOME=$(/usr/libexec/java_home -v13)'" >> ~/.zshrc
+# Default to Java 13
+echo "java13" >> ~/.zshrc
+source ~/.zshrc
 
-## Java
-```bash
-curl -s "https://get.sdkman.io" | bash
-sdk i java
-launchctl setenv JAVA_HOME ~/.sdkman/candidates/java/current
-```
-
-## react native
+## React native
 ```bash
 yarn global add react-native-cli
 # setup android sdk
 ```
 
-## android sdk
+## Android sdk
 ```bash
 brew cask install android-sdk
-echo "export ANDROID_HOME=/usr/local/share/android-sdk" >> ~/.bash_profile
+echo "export ANDROID_HOME=/usr/local/share/android-sdk" >> ~/.zshrc
 source ~/.bash_profile
 
 sdkmanager --update
