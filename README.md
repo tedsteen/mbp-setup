@@ -1,7 +1,7 @@
 ### Generic provisioning
 Read [this article](https://medium.com/@tretuna/macbook-pro-web-developer-setup-from-clean-slate-to-dev-machine-1befd4121ba8) about setting up a web dev-MBP and then [this article](https://dev.to/oryanmoshe/i-spend-one-hour-a-week-optimizing-my-development-environment-l9a) about optimising your dev-workflow on the MBP.
 
-First upgrade macOS to latest everything then
+First upgrade macOS to latest everything and then
 ```bash
 xcode-select --install
 ```
@@ -26,6 +26,7 @@ discord \
 docker \
 intellij-idea \
 iterm2  \
+ocenaudio \
 signal \
 slack \
 ticktick \
@@ -34,6 +35,14 @@ spotify \
 viscosity \
 vlc
 ```
+Manually install
+* [Giphycapture](https://giphy.com/apps/giphycapture)
+* [Loopback Audio](https://rogueamoeba.com/loopback/)
+* [Affinity Photo (login)](https://affinity.serif.com/en-gb/photo/)
+* [Ableton Live (login)](https://www.ableton.com/en/live/)
+* [Autodesk Fusion 360 (login)](https://www.autodesk.com/products/fusion-360/overview)
+* [Wondershare FilmoraPro](https://filmora.wondershare.com/filmorapro-video-editor/)
+
 Install the following plugins for atom
  [atom-beautify](https://atom.io/packages/atom-beautify), [busy-signal](https://atom.io/packages/busy-signal), [file-icons](https://atom.io/packages/file-icons), [git-blame](https://atom.io/packages/git-blame), [intentions](https://atom.io/packages/intentions), [linter](https://atom.io/packages/linter), [linter-ui-default](https://atom.io/packages/linter-ui-default), [minimap](https://atom.io/packages/minimap), [markdown-preview-plus](https://atom.io/packages/markdown-preview-plus) and [teletype](https://atom.io/packages/teletype).  
  Then disable the built in `markdown-preview`.
