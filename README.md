@@ -54,10 +54,15 @@ qlcolorcode \
 qlstephen \
 qlmarkdown \
 quicklook-json \
-qlprettypatch \
-quicklook-csv \
-webpquicklook \
-suspicious-package
+webpquicklook
+
+# If there is trouble with permissions do this (see https://github.com/anthonygelibert/QLColorCode/issues/51#issuecomment-563982425)
+xattr -d com.apple.quarantine ~/Library/QuickLook/QLColorCode.qlgenerator
+xattr -d com.apple.quarantine ~/Library/QuickLook/QLStephen.qlgenerator
+xattr -d com.apple.quarantine ~/Library/QuickLook/QLMarkdown.qlgenerator
+xattr -d com.apple.quarantine ~/Library/QuickLook/WebpQuickLook.qlgenerator
+# And to be sure it is applied do
+killall Finder
 ```
 ### Setup the terminal
 Follow [this guide](https://gist.github.com/kevin-smets/8568070#file-iterm2-solarized-md) and then add docker to `.zshrc` plugins.
