@@ -16,7 +16,6 @@ brew tap homebrew/cask-fonts && brew cask install font-source-code-pro
 ### Some apps
 ```bash
 brew cask install \
-alfred \
 atom \
 bettertouchtool \
 google-backup-and-sync \
