@@ -1,21 +1,20 @@
-# My environment
+### Generic provisioning
+Read [this article](https://medium.com/@tretuna/macbook-pro-web-developer-setup-from-clean-slate-to-dev-machine-1befd4121ba8) about setting up a web dev-MBP and then [this article](https://dev.to/oryanmoshe/i-spend-one-hour-a-week-optimizing-my-development-environment-l9a) about optimising your dev-workflow on the MBP.
 
-## generic provisioning
-# Read https://medium.com/@tretuna/macbook-pro-web-developer-setup-from-clean-slate-to-dev-machine-1befd4121ba8
-# and https://dev.to/oryanmoshe/i-spend-one-hour-a-week-optimizing-my-development-environment-l9a
-# and then basically do the following..
-
-# Upgrade macOS to latest everything
+First upgrade macOS to latest everything then
+```bash
 xcode-select --install
-# Upgrade macOS to latest everything again
+```
+then Upgrade macOS to latest everything again.
 
-# Install homebrew
-# https://brew.sh
-
-# Fonts for iterm2 and other code things
+Next install [homebrew](https://brew.sh)  
+and then install some fonts for iTerm and other code things
+```bash
 brew tap homebrew/cask-fonts && brew cask install font-source-code-pro
+```
 
-# Apps
+### Some apps
+```bash
 brew cask install \
 alfred \
 atom \
@@ -34,8 +33,9 @@ transmission \
 spotify \
 viscosity \
 vlc
-
-# Quick look plugins
+```
+### Some quick look plugins
+```bash
 brew cask install \
 qlcolorcode \
 qlstephen \
@@ -45,18 +45,20 @@ qlprettypatch \
 quicklook-csv \
 webpquicklook \
 suspicious-package
+```
+### Setup the terminal
+Follow [this guide](https://gist.github.com/kevin-smets/8568070#file-iterm2-solarized-md) and then add docker to `.zshrc` plugins.
 
-# Follow this guide https://gist.github.com/kevin-smets/8568070#file-iterm2-solarized-md
-# and then add docker to .zshrc plugins
-
+### Git
+```bash
 git config --global user.name "Ted Steen"
 git config --global user.email "ted.steen@gmail.com"
 git config --global color.ui auto
+```
 
-# Java SDKs
-# see https://stackoverflow.com/questions/52524112/how-do-i-install-java-on-mac-osx-allowing-version-switching/52524114#52524114
-# But in the end it's this:
-
+#### Java SDKs
+See [this thread](https://stackoverflow.com/questions/52524112/how-do-i-install-java-on-mac-osx-allowing-version-switching/52524114#52524114) or just do this
+```bash
 brew tap adoptopenjdk/openjdk && brew cask install \
 adoptopenjdk8 \
 adoptopenjdk11 \
@@ -69,17 +71,20 @@ adoptopenjdk13
 echo "alias java8='export JAVA_HOME=$(/usr/libexec/java_home -v1.8)'" >> ~/.zshrc
 echo "alias java11='export JAVA_HOME=$(/usr/libexec/java_home -v11)'" >> ~/.zshrc
 echo "alias java13='export JAVA_HOME=$(/usr/libexec/java_home -v13)'" >> ~/.zshrc
+
 # Default to Java 13
 echo "java13" >> ~/.zshrc
+# Restart the terminal or
 source ~/.zshrc
+```
 
-## React native
+### React native
 ```bash
 yarn global add react-native-cli
 # setup android sdk
 ```
 
-## Android sdk
+### Android sdk
 ```bash
 brew cask install android-sdk
 echo "export ANDROID_HOME=/usr/local/share/android-sdk" >> ~/.zshrc
