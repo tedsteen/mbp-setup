@@ -84,6 +84,7 @@ echo "alias serve='python -m SimpleHTTPServer'" >> ~/.zshrc
 
 echo "alias wget='wget -c'" >> ~/.zshrc
 
+echo "alias react-native='npx react-native'" >> ~/.zshrc
 ```
 ### Git
 ```bash
@@ -119,12 +120,6 @@ Then install latest node
 ```bash
 nvm install node
 ```
-### React native
-```bash
-yarn global add react-native-cli
-# setup android sdk
-```
-
 ### Android sdk
 ```bash
 brew cask install android-sdk
