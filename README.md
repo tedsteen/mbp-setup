@@ -129,3 +129,20 @@ source ~/.zshrc
 sdkmanager --update
 sdkmanager "platform-tools" "platforms;android-28"
 ```
+
+### Kubernetes
+```bash
+# For knative cli `knctl`
+brew tap starkandwayne/kubernetes
+
+# Install in order:
+# kubectl - the kubernetes cli
+# kubectx - to easily switch between clusters and environments
+# knctl - the knative cli
+# minikube - to create local clusters
+brew install \
+kubectl \
+kubectx \
+knctl \
+minikube
+```
