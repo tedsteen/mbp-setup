@@ -78,6 +78,7 @@ echo 'alias ga="git add"' >> ~/.zshrc
 echo 'alias gaa="git add -A"' >> ~/.zshrc
 echo 'alias gc="git commit -m"' >> ~/.zshrc
 echo 'alias go="git push -u origin"' >> ~/.zshrc
+echo 'alias gco="git checkout"' >> ~/.zshrc
 echo "alias gl=\"git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit\"" >> ~/.zshrc
 
 echo "alias serve='python -m SimpleHTTPServer'" >> ~/.zshrc
