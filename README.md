@@ -113,7 +113,12 @@ echo "java13" >> ~/.zshrc
 # Restart the terminal or
 source ~/.zshrc
 ```
-
+### Node and friends
+Install nvm as [oh-my-zsh-plugin](https://github.com/lukechilds/zsh-nvm#as-an-oh-my-zsh-custom-plugin)  
+Then install latest node
+```bash
+nvm install node
+```
 ### React native
 ```bash
 yarn global add react-native-cli
