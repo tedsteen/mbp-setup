@@ -33,6 +33,9 @@ transmission \
 spotify \
 viscosity \
 vlc
+
+brew install \
+wget
 ```
 Manually install
 * [Giphycapture](https://giphy.com/apps/giphycapture)
@@ -66,6 +69,22 @@ killall Finder
 ### Setup the terminal
 Follow [this guide](https://gist.github.com/kevin-smets/8568070#file-iterm2-solarized-md) and then add docker to `.zshrc` plugins.
 
+#### Other small things
+```bash
+echo 'alias please="sudo"' >> ~/.zshrc
+
+echo 'alias gs="git status"' >> ~/.zshrc
+echo 'alias ga="git add"' >> ~/.zshrc
+echo 'alias gaa="git add -A"' >> ~/.zshrc
+echo 'alias gc="git commit -m"' >> ~/.zshrc
+echo 'alias go="git push -u origin"' >> ~/.zshrc
+echo "alias gl=\"git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit\"" >> ~/.zshrc
+
+echo "alias serve='python -m SimpleHTTPServer'" >> ~/.zshrc
+
+echo "alias wget='wget -c'" >> ~/.zshrc
+
+```
 ### Git
 ```bash
 git config --global user.name "Ted Steen"
