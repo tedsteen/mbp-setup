@@ -73,7 +73,7 @@ Follow [this guide](https://gist.github.com/kevin-smets/8568070#file-iterm2-sola
 
 #### Other small things
 ```bash
-echo 'alias please="sudo"' >> ~/.zshrc
+echo 'alias pls="sudo"' >> ~/.zshrc
 
 echo 'alias gs="git status"' >> ~/.zshrc
 echo 'alias ga="git add"' >> ~/.zshrc
@@ -86,8 +86,6 @@ echo "alias gl=\"git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%C
 echo "alias serve='python -m SimpleHTTPServer'" >> ~/.zshrc
 
 echo "alias wget='wget -c'" >> ~/.zshrc
-
-echo "alias react-native='npx react-native'" >> ~/.zshrc
 ```
 ### Git
 ```bash
@@ -117,6 +115,7 @@ echo "java13" >> ~/.zshrc
 # Restart the terminal or
 source ~/.zshrc
 ```
+
 ### Node and friends
 Install nvm as [oh-my-zsh-plugin](https://github.com/lukechilds/zsh-nvm#as-an-oh-my-zsh-custom-plugin)  
 Then install latest node
@@ -124,7 +123,18 @@ Then install latest node
 nvm install node
 ```
 Then add the plugin `npm` to `~/.zshrc`
-### Android sdk
+
+### React native
+ Make sure Node and friends are installed (see above).
+```bash
+echo "alias react-native='npx react-native'" >> ~/.zshrc
+```
+#### iOS SDK
+Install [Xcode](https://apps.apple.com/us/app/xcode/id497799835) and then
+```bash
+brew install cocoapods
+```
+#### Android SDK
 ```bash
 brew cask install android-sdk
 echo "export ANDROID_HOME=/usr/local/share/android-sdk" >> ~/.zshrc
