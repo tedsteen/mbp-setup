@@ -67,7 +67,9 @@ xattr -d com.apple.quarantine ~/Library/QuickLook/WebpQuickLook.qlgenerator
 killall Finder
 ```
 ### Setup the terminal
-Follow [this guide](https://gist.github.com/kevin-smets/8568070#file-iterm2-solarized-md) and then add docker to `.zshrc` plugins.
+Follow [this guide](https://gist.github.com/kevin-smets/8568070#file-iterm2-solarized-md) and then add the following plugins to `.zshrc`
+* `docker`
+* [autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh) (needs some reading)
 
 #### Other small things
 ```bash
@@ -121,6 +123,7 @@ Then install latest node
 ```bash
 nvm install node
 ```
+Then add the plugin `npm` to `~/.zshrc`
 ### Android sdk
 ```bash
 brew cask install android-sdk
@@ -141,9 +144,12 @@ brew tap starkandwayne/kubernetes
 # kubectx - to easily switch between clusters and environments
 # knctl - the knative cli
 # minikube - to create local clusters
+# k9s - Kubernetes CLI To Manage Your Clusters In Style
 brew install \
 kubectl \
 kubectx \
 knctl \
-minikube
+minikube \
+derailed/k9s/k9s
 ```
+Then add the plugin `kubectl` to `~/.zshrc`
