@@ -162,5 +162,7 @@ kubectx \
 knctl \
 minikube \
 derailed/k9s/k9s
+
+# Perhaps try out https://github.com/derailed/popeye
 ```
 Then add the plugin `kubectl` to `~/.zshrc`
