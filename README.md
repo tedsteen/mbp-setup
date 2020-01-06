@@ -137,11 +137,12 @@ brew install cocoapods
 #### Android SDK
 ```bash
 brew cask install android-sdk
-echo "export ANDROID_HOME=/usr/local/share/android-sdk" >> ~/.zshrc
+echo "export ANDROID_SDK_ROOT='/usr/local/share/android-sdk'" >> ~/.zshrc
 source ~/.zshrc
-
+# sdkmanager requires java8!
+java8
 sdkmanager --update
-sdkmanager "platform-tools" "platforms;android-28"
+sdkmanager "platform-tools" "platforms;android-28" "system-images;android-28;default;x86_64" "build-tools;28.0.3"
 ```
 
 ### Kubernetes
