@@ -82,6 +82,7 @@ echo 'alias gc="git commit -m"' >> ~/.zshrc
 echo 'alias go="git push -u origin"' >> ~/.zshrc
 echo 'alias gco="git checkout"' >> ~/.zshrc
 echo "alias gl=\"git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit\"" >> ~/.zshrc
+echo "alias gb=\"git for-each-ref --sort='-authordate:iso8601' --format=' %(color:green)%(authordate:iso8601)%09%(color:white)%(refname:short)' refs/heads\"" >> ~/.zshrc
 
 echo "alias serve='python -m SimpleHTTPServer'" >> ~/.zshrc
 
@@ -105,11 +106,11 @@ adoptopenjdk13
 # To list all available versions
 /usr/libexec/java_home -V
 
-# Make it easy to switch
+# Make it easy to switch and check version
 echo "alias java8='export JAVA_HOME=$(/usr/libexec/java_home -v1.8)'" >> ~/.zshrc
 echo "alias java11='export JAVA_HOME=$(/usr/libexec/java_home -v11)'" >> ~/.zshrc
 echo "alias java13='export JAVA_HOME=$(/usr/libexec/java_home -v13)'" >> ~/.zshrc
-
+echo "alias javav='java --version'" >> ~/.zshrc
 # Default to Java 13
 echo "java13" >> ~/.zshrc
 # Restart the terminal or
