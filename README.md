@@ -75,14 +75,23 @@ Follow [this guide](https://gist.github.com/kevin-smets/8568070#file-iterm2-sola
 ```bash
 echo 'alias pls="sudo"' >> ~/.zshrc
 
+# git
 echo 'alias gs="git status"' >> ~/.zshrc
 echo 'alias ga="git add"' >> ~/.zshrc
 echo 'alias gaa="git add -A"' >> ~/.zshrc
 echo 'alias gc="git commit -m"' >> ~/.zshrc
+echo 'alias gd="git diff HEAD"' >> ~/.zshrc
 echo 'alias go="git push -u origin"' >> ~/.zshrc
 echo 'alias gco="git checkout"' >> ~/.zshrc
 echo "alias gl=\"git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit\"" >> ~/.zshrc
+# All local branches in the order of their last commit
 echo "alias gb=\"git for-each-ref --sort='-authordate:iso8601' --format=' %(color:green)%(authordate:iso8601)%09%(color:white)%(refname:short)' refs/heads\"" >> ~/.zshrc
+echo 'alias gnuke="git reset --hard; git clean -fd"' >> ~/.zshrc
+
+# docker
+# Delete all stopped containers (including data-only containers)
+echo 'alias dkrm="docker rm $(docker ps -a -q)"' >> ~/.zshrc
+echo 'alias dkkill="docker kill $(docker ps -q)"' >> ~/.zshrc
 
 echo "alias serve='python -m SimpleHTTPServer'" >> ~/.zshrc
 
