@@ -23,6 +23,7 @@ google-chrome \
 dashlane \
 discord \
 docker \
+iina \
 intellij-idea \
 iterm2  \
 ocenaudio \
@@ -31,8 +32,7 @@ slack \
 ticktick \
 transmission \
 spotify \
-viscosity \
-vlc
+viscosity
 
 brew install \
 wget
