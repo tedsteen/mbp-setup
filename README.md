@@ -17,6 +17,7 @@ brew tap homebrew/cask-fonts && brew cask install font-source-code-pro
 ```bash
 brew cask install \
 atom \
+authy \
 bettertouchtool \
 google-backup-and-sync \
 google-chrome \
@@ -32,9 +33,11 @@ slack \
 ticktick \
 transmission \
 spotify \
-viscosity
+viscosity \
+visualvm
 
 brew install \
+watch \
 wget
 ```
 Manually install
