@@ -21,6 +21,7 @@ authy \
 bettertouchtool \
 google-backup-and-sync \
 google-chrome \
+handbrake \
 dashlane \
 discord \
 docker \
@@ -93,8 +94,8 @@ echo 'alias gnuke="git reset --hard; git clean -fd"' >> ~/.zshrc
 
 # docker
 # Delete all stopped containers (including data-only containers)
-echo 'alias dkrm="docker rm $(docker ps -a -q)"' >> ~/.zshrc
-echo 'alias dkkill="docker kill $(docker ps -q)"' >> ~/.zshrc
+echo 'alias dkrm="for id in $(docker ps -aq -f status=exited); do docker rm -f $id; done"' >> ~/.zshrc
+echo 'alias dkkill="for id in $(docker ps -q); do docker kill $id; done"' >> ~/.zshrc
 
 echo "alias serve='python -m SimpleHTTPServer'" >> ~/.zshrc
 
@@ -160,19 +161,18 @@ sdkmanager "platform-tools" "platforms;android-28" "system-images;android-28;def
 
 ### Kubernetes
 ```bash
-# For knative cli `knctl`
-brew tap starkandwayne/kubernetes
-
 # Install in order:
 # kubectl - the kubernetes cli
 # kubectx - to easily switch between clusters and environments
-# knctl - the knative cli
+# helm
+# kn - the knative cli
 # minikube - to create local clusters
 # k9s - Kubernetes CLI To Manage Your Clusters In Style
 brew install \
 kubectl \
 kubectx \
-knctl \
+helm \
+starkandwayne/kubernetes/knative-client \
 minikube \
 derailed/k9s/k9s
 
