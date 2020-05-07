@@ -18,7 +18,6 @@ brew tap homebrew/cask-fonts && brew cask install font-source-code-pro
 brew cask install \
 atom \
 authy \
-bettertouchtool \
 google-backup-and-sync \
 google-chrome \
 handbrake \
@@ -47,6 +46,7 @@ Manually install
 * [Affinity Photo (login)](https://affinity.serif.com/en-gb/photo/)
 * [Ableton Live (login)](https://www.ableton.com/en/live/)
 * [Autodesk Fusion 360 (login)](https://www.autodesk.com/products/fusion-360/overview)
+* [Sketchup (online no install)](https://app.sketchup.com/)
 * [Wondershare FilmoraPro](https://filmora.wondershare.com/filmorapro-video-editor/)
 
 Install the following plugins for atom
@@ -142,6 +142,7 @@ Then add the plugin `npm` to `~/.zshrc`
  Make sure Node and friends are installed (see above).
 ```bash
 echo "alias react-native='npx react-native'" >> ~/.zshrc
+brew install watchman
 ```
 #### iOS SDK
 Install [Xcode](https://apps.apple.com/us/app/xcode/id497799835) and then
@@ -166,14 +167,16 @@ sdkmanager "platform-tools" "platforms;android-28" "system-images;android-28;def
 # kubectx - to easily switch between clusters and environments
 # helm
 # kn - the knative cli
-# minikube - to create local clusters
+# #minikube - to create local clusters
+# k3d - to create local clusters
 # k9s - Kubernetes CLI To Manage Your Clusters In Style
 brew install \
 kubectl \
 kubectx \
 helm \
 starkandwayne/kubernetes/knative-client \
-minikube \
+#minikube \
+k3d \
 derailed/k9s/k9s
 
 # Perhaps try out https://github.com/derailed/popeye
