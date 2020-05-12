@@ -91,9 +91,9 @@ alias gc="git commit -m"
 alias gd="git diff HEAD"
 alias go="git push -u origin"
 alias gco="git checkout"
-alias gl=\"git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit\"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 # All local branches in the order of their last commit
-alias gb=\"git for-each-ref --sort='-authordate:iso8601' --format=' %(color:green)%(authordate:iso8601)%09%(color:white)%(refname:short)' refs/heads\"
+alias gb="git for-each-ref --sort='-authordate:iso8601' --format=' %(color:green)%(authordate:iso8601)%09%(color:white)%(refname:short)' refs/heads"
 alias gnuke="git reset --hard; git clean -fd"
 
 # docker
@@ -129,7 +129,8 @@ See [this thread](https://stackoverflow.com/questions/52524112/how-do-i-install-
 brew tap adoptopenjdk/openjdk && brew cask install \
 adoptopenjdk8 \
 adoptopenjdk11 \
-adoptopenjdk13
+adoptopenjdk13 \
+adoptopenjdk14
 
 # To list all available versions
 /usr/libexec/java_home -V
@@ -139,9 +140,10 @@ cat <<'EOF' >> ~/.zshrc
 alias java8='export JAVA_HOME=$(/usr/libexec/java_home -v1.8)'
 alias java11='export JAVA_HOME=$(/usr/libexec/java_home -v11)'
 alias java13='export JAVA_HOME=$(/usr/libexec/java_home -v13)'
-alias javav='java --version'
-# Default to Java 13
-java13
+alias java14='export JAVA_HOME=$(/usr/libexec/java_home -v14)'
+alias javav='java -version'
+# Default to Java 14
+java14
 EOF
 
 # Restart the terminal or
