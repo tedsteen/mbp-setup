@@ -39,6 +39,9 @@ visualvm
 brew install \
 watch \
 wget
+
+brew tap filippo.io/age https://filippo.io/age
+brew install age
 ```
 Manually install
 * [Giphycapture](https://giphy.com/apps/giphycapture)
@@ -77,29 +80,41 @@ Follow [this guide](https://gist.github.com/kevin-smets/8568070#file-iterm2-sola
 
 #### Other small things
 ```bash
-echo 'alias pls="sudo"' >> ~/.zshrc
+cat <<'EOF' >> ~/.zshrc
+alias pls="sudo"
 
 # git
-echo 'alias gs="git status"' >> ~/.zshrc
-echo 'alias ga="git add"' >> ~/.zshrc
-echo 'alias gaa="git add -A"' >> ~/.zshrc
-echo 'alias gc="git commit -m"' >> ~/.zshrc
-echo 'alias gd="git diff HEAD"' >> ~/.zshrc
-echo 'alias go="git push -u origin"' >> ~/.zshrc
-echo 'alias gco="git checkout"' >> ~/.zshrc
-echo "alias gl=\"git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit\"" >> ~/.zshrc
+alias gs="git status"
+alias ga="git add"
+alias gaa="git add -A"
+alias gc="git commit -m"
+alias gd="git diff HEAD"
+alias go="git push -u origin"
+alias gco="git checkout"
+alias gl=\"git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit\"
 # All local branches in the order of their last commit
-echo "alias gb=\"git for-each-ref --sort='-authordate:iso8601' --format=' %(color:green)%(authordate:iso8601)%09%(color:white)%(refname:short)' refs/heads\"" >> ~/.zshrc
-echo 'alias gnuke="git reset --hard; git clean -fd"' >> ~/.zshrc
+alias gb=\"git for-each-ref --sort='-authordate:iso8601' --format=' %(color:green)%(authordate:iso8601)%09%(color:white)%(refname:short)' refs/heads\"
+alias gnuke="git reset --hard; git clean -fd"
 
 # docker
 # Delete all stopped containers (including data-only containers)
-echo 'alias dkrm="for id in $(docker ps -aq -f status=exited); do docker rm -f $id; done"' >> ~/.zshrc
-echo 'alias dkkill="for id in $(docker ps -q); do docker kill $id; done"' >> ~/.zshrc
+alias dkrm='for id in $(docker ps -aq -f status=exited); do docker rm -f $id; done'
+alias dkkill='for id in $(docker ps -q); do docker kill $id; done'
 
-echo "alias serve='python -m SimpleHTTPServer'" >> ~/.zshrc
+alias serve='python -m SimpleHTTPServer'
 
-echo "alias wget='wget -c'" >> ~/.zshrc
+alias wget='wget -c'
+
+alias k='kubectl'
+
+encrypt() {
+  age -r "$(cat ${1:-~/.ssh/id_rsa.pub})" -
+}
+
+decrypt() {
+  age -d -i ${1:-~/.ssh/id_rsa} -
+}
+EOF
 ```
 ### Git
 ```bash
@@ -120,12 +135,15 @@ adoptopenjdk13
 /usr/libexec/java_home -V
 
 # Make it easy to switch and check version
-echo "alias java8='export JAVA_HOME=$(/usr/libexec/java_home -v1.8)'" >> ~/.zshrc
-echo "alias java11='export JAVA_HOME=$(/usr/libexec/java_home -v11)'" >> ~/.zshrc
-echo "alias java13='export JAVA_HOME=$(/usr/libexec/java_home -v13)'" >> ~/.zshrc
-echo "alias javav='java --version'" >> ~/.zshrc
+cat <<'EOF' >> ~/.zshrc
+alias java8='export JAVA_HOME=$(/usr/libexec/java_home -v1.8)'
+alias java11='export JAVA_HOME=$(/usr/libexec/java_home -v11)'
+alias java13='export JAVA_HOME=$(/usr/libexec/java_home -v13)'
+alias javav='java --version'
 # Default to Java 13
-echo "java13" >> ~/.zshrc
+java13
+EOF
+
 # Restart the terminal or
 source ~/.zshrc
 ```
