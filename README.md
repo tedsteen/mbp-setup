@@ -37,6 +37,7 @@ viscosity \
 visualvm
 
 brew install \
+jq \
 watch \
 wget
 
@@ -104,6 +105,7 @@ alias dkkill='for id in $(docker ps -q); do docker kill $id; done'
 alias serve='python -m SimpleHTTPServer'
 
 alias wget='wget -c'
+alias jcurl='curl -H "Content-Type: application/json" -H "Accept: application/json"'
 
 alias k='kubectl'
 
@@ -126,24 +128,49 @@ git config --global color.ui auto
 #### Java SDKs
 See [this thread](https://stackoverflow.com/questions/52524112/how-do-i-install-java-on-mac-osx-allowing-version-switching/52524114#52524114) or just do this
 ```bash
-brew tap adoptopenjdk/openjdk && brew cask install \
-adoptopenjdk8 \
-adoptopenjdk11 \
-adoptopenjdk13 \
-adoptopenjdk14
+brew tap adoptopenjdk/openjdk
 
 # To list all available versions
 /usr/libexec/java_home -V
 
 # Make it easy to switch and check version
 cat <<'EOF' >> ~/.zshrc
-alias java8='export JAVA_HOME=$(/usr/libexec/java_home -v1.8)'
-alias java11='export JAVA_HOME=$(/usr/libexec/java_home -v11)'
-alias java13='export JAVA_HOME=$(/usr/libexec/java_home -v13)'
-alias java14='export JAVA_HOME=$(/usr/libexec/java_home -v14)'
 alias javav='java -version'
+
+chjava() {
+  JHOME=/Library/Java/JavaVirtualMachines/$1/Contents/Home
+  CASK=$2
+  if [ ! -d "$JHOME" ]; then
+    echo "Java $CASK is not installed, installing..."
+    brew cask install $CASK
+  fi
+  export JAVA_HOME=$JHOME
+  java -version
+}
+
+alias java8='chjava adoptopenjdk-8.jdk adoptopenjdk8'
+alias java9='chjava adoptopenjdk-9.jdk adoptopenjdk9'
+alias java10='chjava adoptopenjdk-10.jdk adoptopenjdk10'
+alias java11='chjava adoptopenjdk-11.jdk adoptopenjdk11'
+alias java12='chjava adoptopenjdk-12.jdk adoptopenjdk12'
+alias java13='chjava adoptopenjdk-13.jdk adoptopenjdk13'
+alias java14='chjava adoptopenjdk-14.jdk adoptopenjdk14'
+alias java15='chjava adoptopenjdk-15.jdk adoptopenjdk15'
+
 # Default to Java 14
 java14
+EOF
+
+# If you want zulu https://github.com/mdogan/homebrew-zulu
+brew tap mdogan/zulu
+
+cat <<'EOF' >> ~/.zshrc
+alias javazulu8='chjava zulu-8.jdk zulu-jdk8'
+alias javazulu11='chjava zulu-11.jdk zulu-jdk11'
+alias javazulu12='chjava zulu-12.jdk zulu-jdk12'
+alias javazulu13='chjava zulu-13.jdk zulu-jdk13'
+alias javazulu14='chjava zulu-14.jdk zulu-jdk14'
+alias javazulu15='chjava zulu-15.jdk zulu-jdk15'
 EOF
 
 # Restart the terminal or
