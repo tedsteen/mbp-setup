@@ -138,39 +138,49 @@ cat <<'EOF' >> ~/.zshrc
 alias javav='java -version'
 
 chjava() {
-  JHOME=/Library/Java/JavaVirtualMachines/$1/Contents/Home
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/$1/Contents/Home
   CASK=$2
-  if [ ! -d "$JHOME" ]; then
+  if [ ! -d "$JAVA_HOME" ]; then
     echo "Java $CASK is not installed, installing..."
     brew cask install $CASK
   fi
-  export JAVA_HOME=$JHOME
+
+  if [ "$3" = "global" ]; then
+    sudo ln -sfn $JAVA_HOME /Library/Java/JavaVirtualMachines/current
+  fi
   java -version
 }
 
-alias java8='chjava adoptopenjdk-8.jdk adoptopenjdk8'
-alias java9='chjava adoptopenjdk-9.jdk adoptopenjdk9'
-alias java10='chjava adoptopenjdk-10.jdk adoptopenjdk10'
-alias java11='chjava adoptopenjdk-11.jdk adoptopenjdk11'
-alias java12='chjava adoptopenjdk-12.jdk adoptopenjdk12'
-alias java13='chjava adoptopenjdk-13.jdk adoptopenjdk13'
-alias java14='chjava adoptopenjdk-14.jdk adoptopenjdk14'
-alias java15='chjava adoptopenjdk-15.jdk adoptopenjdk15'
+mk_ojdk_alias() {
+  eval "alias java$1=\"chjava adoptopenjdk-$1.jdk adoptopenjdk$1\""
+}
 
-# Default to Java 14
-java14
+mk_ojdk_alias 8
+mk_ojdk_alias 9
+mk_ojdk_alias 10
+mk_ojdk_alias 11
+mk_ojdk_alias 12
+mk_ojdk_alias 13
+mk_ojdk_alias 14
+mk_ojdk_alias 15
+
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/current
 EOF
 
 # If you want zulu https://github.com/mdogan/homebrew-zulu
 brew tap mdogan/zulu
-
 cat <<'EOF' >> ~/.zshrc
-alias javazulu8='chjava zulu-8.jdk zulu-jdk8'
-alias javazulu11='chjava zulu-11.jdk zulu-jdk11'
-alias javazulu12='chjava zulu-12.jdk zulu-jdk12'
-alias javazulu13='chjava zulu-13.jdk zulu-jdk13'
-alias javazulu14='chjava zulu-14.jdk zulu-jdk14'
-alias javazulu15='chjava zulu-15.jdk zulu-jdk15'
+mk_zulu_alias() {
+  eval "alias java$1zulu=\"chjava zulu-$1.jdk zulu-jdk$1\""
+}
+
+mk_zulu_alias 7
+mk_zulu_alias 8
+mk_zulu_alias 11
+mk_zulu_alias 12
+mk_zulu_alias 13
+mk_zulu_alias 14
+mk_zulu_alias 15
 EOF
 
 # Restart the terminal or
