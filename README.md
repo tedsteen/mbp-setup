@@ -137,50 +137,34 @@ brew tap adoptopenjdk/openjdk
 cat <<'EOF' >> ~/.zshrc
 alias javav='java -version'
 
-chjava() {
-  export JAVA_HOME=/Library/Java/JavaVirtualMachines/$1/Contents/Home
-  CASK=$2
+__chjava() {
+  TAP=$1
+  if [ ! -z "$(brew tap-info $TAP | grep 'Not installed')" ]; then
+    brew tap $TAP
+  fi
+
+  export JAVA_HOME=/Library/Java/JavaVirtualMachines/$2/Contents/Home
+  CASK=$3
   if [ ! -d "$JAVA_HOME" ]; then
     echo "Java $CASK is not installed, installing..."
     brew cask install $CASK
   fi
 
-  if [ "$3" = "global" ]; then
+  if [ "$4" = "global" ]; then
     sudo ln -sfn $JAVA_HOME /Library/Java/JavaVirtualMachines/current
   fi
   java -version
 }
 
-mk_ojdk_alias() {
-  eval "alias java$1=\"chjava adoptopenjdk-$1.jdk adoptopenjdk$1\""
+javaopenjdk() {
+  __chjava adoptopenjdk/openjdk adoptopenjdk-$1.jdk adoptopenjdk$1 $2
 }
 
-mk_ojdk_alias 8
-mk_ojdk_alias 9
-mk_ojdk_alias 10
-mk_ojdk_alias 11
-mk_ojdk_alias 12
-mk_ojdk_alias 13
-mk_ojdk_alias 14
-mk_ojdk_alias 15
+javazulu() {
+  __chjava mdogan/zulu zulu-$1.jdk zulu-jdk$1 $2
+}
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/current
-EOF
-
-# If you want zulu https://github.com/mdogan/homebrew-zulu
-brew tap mdogan/zulu
-cat <<'EOF' >> ~/.zshrc
-mk_zulu_alias() {
-  eval "alias java$1zulu=\"chjava zulu-$1.jdk zulu-jdk$1\""
-}
-
-mk_zulu_alias 7
-mk_zulu_alias 8
-mk_zulu_alias 11
-mk_zulu_alias 12
-mk_zulu_alias 13
-mk_zulu_alias 14
-mk_zulu_alias 15
 EOF
 
 # Restart the terminal or
