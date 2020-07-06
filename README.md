@@ -20,6 +20,7 @@ atom \
 authy \
 google-backup-and-sync \
 google-chrome \
+grandperspective \
 handbrake \
 dashlane \
 discord \
@@ -39,7 +40,8 @@ visualvm
 brew install \
 jq \
 watch \
-wget
+wget \
+telnet
 
 brew tap filippo.io/age https://filippo.io/age
 brew install age
@@ -128,15 +130,14 @@ git config --global color.ui auto
 #### Java SDKs
 See [this thread](https://stackoverflow.com/questions/52524112/how-do-i-install-java-on-mac-osx-allowing-version-switching/52524114#52524114) or just do this
 ```bash
-brew tap adoptopenjdk/openjdk
 
 # To list all available versions
 /usr/libexec/java_home -V
 
 # Make it easy to switch and check version
 cat <<'EOF' >> ~/.zshrc
-alias javav='java -version'
-
+alias javav='echo "\$JAVA_HOME=\'$JAVA_HOME\'" && ls -l /Library/Java/JavaVirtualMachines/current && java -version'
+alias javavv='/usr/libexec/java_home -V'
 __chjava() {
   TAP=$1
   if [ ! -z "$(brew tap-info $TAP | grep 'Not installed')" ]; then
