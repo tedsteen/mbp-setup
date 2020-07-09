@@ -136,7 +136,7 @@ See [this thread](https://stackoverflow.com/questions/52524112/how-do-i-install-
 
 # Make it easy to switch and check version
 cat <<'EOF' >> ~/.zshrc
-alias javav='echo "\$JAVA_HOME=\'$JAVA_HOME\'" && ls -l /Library/Java/JavaVirtualMachines/current && java -version'
+alias javav='echo JAVA_HOME=$JAVA_HOME && ls -l /Library/Java/JavaVirtualMachines/current && java -version'
 alias javavv='/usr/libexec/java_home -V'
 __chjava() {
   TAP=$1
@@ -196,8 +196,8 @@ brew install cocoapods
 brew cask install android-sdk
 echo "export ANDROID_SDK_ROOT='/usr/local/share/android-sdk'" >> ~/.zshrc
 source ~/.zshrc
-# sdkmanager requires java8!
-java8
+# sdkmanager requires java 8!
+javaopenjdk 8
 sdkmanager --update
 sdkmanager "platform-tools" "platforms;android-28" "system-images;android-28;default;x86_64" "build-tools;28.0.3"
 ```
