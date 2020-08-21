@@ -154,7 +154,7 @@ __chjava() {
   if [ "$4" = "global" ]; then
     sudo ln -sfn $JAVA_HOME /Library/Java/JavaVirtualMachines/current
   fi
-  java -version
+  javav
 }
 
 javaopenjdk() {
