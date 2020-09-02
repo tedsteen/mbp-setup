@@ -28,6 +28,7 @@ docker \
 iina \
 intellij-idea \
 iterm2  \
+numi \
 ocenaudio \
 signal \
 slack \
@@ -41,7 +42,8 @@ brew install \
 jq \
 watch \
 wget \
-telnet
+telnet \
+tldr
 
 brew tap filippo.io/age https://filippo.io/age
 brew install age
