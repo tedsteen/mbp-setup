@@ -122,6 +122,7 @@ Manually install
 * [Autodesk Fusion 360 (login)](https://www.autodesk.com/products/fusion-360/overview)
 * [Sketchup (online no install)](https://app.sketchup.com/)
 * [Wondershare FilmoraPro](https://filmora.wondershare.com/filmorapro-video-editor/)
+* TODO: [LittleSnitch](https://www.obdev.at/products/littlesnitch/index.html)?
 
 Install the following plugins for atom
  [atom-beautify](https://atom.io/packages/atom-beautify), [busy-signal](https://atom.io/packages/busy-signal), [file-icons](https://atom.io/packages/file-icons), [git-blame](https://atom.io/packages/git-blame), [intentions](https://atom.io/packages/intentions), [linter](https://atom.io/packages/linter), [linter-ui-default](https://atom.io/packages/linter-ui-default), [minimap](https://atom.io/packages/minimap), [markdown-preview-plus](https://atom.io/packages/markdown-preview-plus) and [teletype](https://atom.io/packages/teletype).  
