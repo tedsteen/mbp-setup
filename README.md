@@ -7,6 +7,62 @@ xcode-select --install
 ```
 then Upgrade macOS to latest everything again.
 
+Next set some system preferences
+```bash
+# Expanding the save panel by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+# Automatically quit printer app once the print jobs complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+# Check for software updates daily, not just once per week
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+# Setting trackpad & mouse speed to a reasonable number
+defaults write -g com.apple.trackpad.scaling 2
+defaults write -g com.apple.mouse.scaling 2.5
+
+# Showing all filename extensions in Finder by default
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Disabling the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Use column view in all Finder windows by default
+defaults write com.apple.finder FXPreferredViewStyle Clmv
+
+# Avoiding the creation of .DS_Store files on network volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+# Enabling snap-to-grid for icons on the desktop and in other icon views
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+
+# Setting the icon size of Dock items to 36 pixels for optimal size/screen-realestate
+defaults write com.apple.dock tilesize -int 36
+
+# Speeding up Mission Control animations and grouping windows by application
+defaults write com.apple.dock expose-animation-duration -float 0.1
+defaults write com.apple.dock "expose-group-by-app" -bool true
+
+# Setting Dock to auto-hide and removing the auto-hiding delay
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock autohide-time-modifier -float 0
+
+# Preventing Time Machine from prompting to use new hard drives as backup volume
+defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+
+# Disable the sudden motion sensor as its not useful for SSDs
+sudo pmset -a sms 0
+
+# restart finder to apply it all
+killall Finder
+
+```
 Next install [homebrew](https://brew.sh)  
 and then install some fonts for iTerm and other code things
 ```bash
@@ -34,6 +90,7 @@ numi \
 ocenaudio \
 signal \
 slack \
+the-unarchiver \
 ticktick \
 transmission \
 spotify \
@@ -56,6 +113,7 @@ mas install 1480068668 # Messenger
 mas install 1147396723 # WhatsApp
 mas install 441258766  # Magnet
 mas install 668208984  # Giphy capture
+mas install 1319778037 # iStat Menus
 ```
 Manually install
 * [Loopback Audio](https://rogueamoeba.com/loopback/)
