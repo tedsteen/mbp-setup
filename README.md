@@ -18,6 +18,7 @@ brew tap homebrew/cask-fonts && brew cask install font-source-code-pro
 brew cask install \
 atom \
 authy \
+cyberduck \
 google-backup-and-sync \
 google-chrome \
 grandperspective \
@@ -28,6 +29,7 @@ docker \
 iina \
 intellij-idea \
 iterm2  \
+mas \
 numi \
 ocenaudio \
 signal \
@@ -47,9 +49,15 @@ tldr
 
 brew tap filippo.io/age https://filippo.io/age
 brew install age
+
+mas install 1451685025 # Wireguard
+mas install 1491071483 # Tot
+mas install 1480068668 # Messenger
+mas install 1147396723 # WhatsApp
+mas install 441258766  # Magnet
+mas install 668208984  # Giphy capture
 ```
 Manually install
-* [Giphycapture](https://giphy.com/apps/giphycapture)
 * [Loopback Audio](https://rogueamoeba.com/loopback/)
 * [Affinity Photo (login)](https://affinity.serif.com/en-gb/photo/)
 * [Ableton Live (login)](https://www.ableton.com/en/live/)
@@ -78,6 +86,7 @@ cat <<'EOF' >> ~/.zshrc
 alias pls="sudo"
 
 # git
+alias ls="ls -haln"
 alias gs="git status"
 alias ga="git add"
 alias gaa="git add -A"
@@ -178,8 +187,8 @@ echo "alias react-native='npx react-native'" >> ~/.zshrc
 brew install watchman
 ```
 #### iOS SDK
-Install [Xcode](https://apps.apple.com/us/app/xcode/id497799835) and then
 ```bash
+mas install 497799835 # Xcode
 brew install cocoapods
 ```
 #### Android SDK
