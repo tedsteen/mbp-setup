@@ -41,9 +41,6 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 
-# Setting the icon size of Dock items to 36 pixels for optimal size/screen-realestate
-defaults write com.apple.dock tilesize -int 36
-
 # Speeding up Mission Control animations and grouping windows by application
 defaults write com.apple.dock expose-animation-duration -float 0.1
 defaults write com.apple.dock "expose-group-by-app" -bool true
@@ -51,7 +48,10 @@ defaults write com.apple.dock "expose-group-by-app" -bool true
 # Setting Dock to auto-hide and removing the auto-hiding delay
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock autohide-delay -float 0
-defaults write com.apple.dock autohide-time-modifier -float 0
+defaults write com.apple.dock autohide-time-modifier -float .1
+
+# Setting the icon size of Dock items to 36 pixels for optimal size/screen-realestate
+defaults write com.apple.dock tilesize -int 36
 
 # Preventing Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
@@ -59,8 +59,10 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 # Disable the sudden motion sensor as its not useful for SSDs
 sudo pmset -a sms 0
 
-# restart finder to apply it all
+# restart finder to apply finder things
 killall Finder
+# restart dock to apply dock things
+killall Dock
 
 ```
 Next install [homebrew](https://brew.sh)  
