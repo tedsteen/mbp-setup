@@ -103,6 +103,7 @@ brew tap filippo.io/age https://filippo.io/age
 brew install age
 
 mas install 425424353  # The Unarchiver
+mas install 1176895641 # Spark
 mas install 552383089  # Dashlane
 mas install 1451685025 # Wireguard
 mas install 1491071483 # Tot
