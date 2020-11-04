@@ -187,9 +187,9 @@ dev-here() {
       return 1
   fi
 
-  args=$3
-  msg="$lang opening port $port running $args"
+  msg="$lang opening port $port running bash"
   echo $msg
+  args=$3
   cmd="docker run --rm -it -p ${port}:${port} -v ${PWD}:/code -w /code $args $lang bash"
   echo $cmd
   eval $cmd
