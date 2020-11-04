@@ -79,7 +79,6 @@ google-backup-and-sync \
 google-chrome \
 grandperspective \
 handbrake \
-dashlane \
 discord \
 docker \
 iina \
@@ -89,12 +88,8 @@ mas \
 numi \
 ocenaudio \
 signal \
-slack \
-the-unarchiver \
-ticktick \
 transmission \
 spotify \
-viscosity \
 visualvm
 
 brew install \
@@ -107,6 +102,8 @@ tldr
 brew tap filippo.io/age https://filippo.io/age
 brew install age
 
+mas install 425424353  # The Unarchiver
+mas install 552383089  # Dashlane
 mas install 1451685025 # Wireguard
 mas install 1491071483 # Tot
 mas install 1480068668 # Messenger
@@ -114,6 +111,8 @@ mas install 1147396723 # WhatsApp
 mas install 441258766  # Magnet
 mas install 668208984  # Giphy capture
 mas install 1319778037 # iStat Menus
+mas install 803453959  # Slack
+mas install 966085870  # Ticktick
 ```
 Manually install
 * [Loopback Audio](https://rogueamoeba.com/loopback/)
