@@ -177,6 +177,23 @@ encrypt() {
 decrypt() {
   age -d -i ${1:-~/.ssh/id_rsa} -
 }
+
+dev-here() {
+  lang=$1
+  port=${2:-8000}
+
+  if [ "$lang" = "" ]; then
+      echo 'usage is dev-here <container name> [port:8000] [extra docker args]'
+      return 1
+  fi
+
+  args=$3
+  msg="$lang opening port $port running $args"
+  echo $msg
+  cmd="docker run --rm -it -p ${port}:${port} -v ${PWD}:/code -w /code $args $lang bash"
+  echo $cmd
+  eval $cmd
+}
 EOF
 ```
 ### Git
