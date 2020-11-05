@@ -76,7 +76,6 @@ brew tap homebrew/cask-fonts && brew cask install font-source-code-pro
 brew cask install \
 atom \
 authy \
-cyberduck \
 google-backup-and-sync \
 google-chrome \
 grandperspective \
@@ -92,6 +91,8 @@ ocenaudio \
 signal \
 transmission \
 spotify \
+vanilla \
+virtualbox \
 visualvm
 
 brew install \
@@ -116,6 +117,7 @@ mas install 668208984  # Giphy capture
 mas install 1319778037 # iStat Menus
 mas install 803453959  # Slack
 mas install 966085870  # Ticktick
+mas install 1477089520 # Backtrack
 ```
 Manually install
 * [Loopback Audio](https://rogueamoeba.com/loopback/)
