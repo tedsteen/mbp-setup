@@ -75,11 +75,11 @@ brew tap homebrew/cask-fonts && brew cask install font-source-code-pro
 ```bash
 brew cask install \
 authy \
+discord \
+docker \
 google-backup-and-sync \
 grandperspective \
 handbrake \
-discord \
-docker \
 iina \
 intellij-idea \
 iterm2  \
@@ -87,8 +87,8 @@ mas \
 numi \
 ocenaudio \
 signal \
-transmission \
 spotify \
+transmission \
 vanilla \
 virtualbox \
 visual-studio-code \
@@ -96,34 +96,34 @@ visualvm
 
 brew install \
 jq \
-watch \
-wget \
 telnet \
-tldr
+tldr \
+watch \
+wget
 
 brew tap filippo.io/age https://filippo.io/age
 brew install age
 
-mas install 425424353  # The Unarchiver
-mas install 1176895641 # Spark
+mas install 1477089520 # Backtrack
 mas install 552383089  # Dashlane
-mas install 1451685025 # Wireguard
-mas install 1491071483 # Tot
-mas install 1480068668 # Messenger
-mas install 1147396723 # WhatsApp
-mas install 441258766  # Magnet
 mas install 668208984  # Giphy capture
 mas install 1319778037 # iStat Menus
+mas install 441258766  # Magnet
+mas install 1480068668 # Messenger
 mas install 803453959  # Slack
+mas install 1176895641 # Spark
+mas install 425424353  # The Unarchiver
 mas install 966085870  # Ticktick
-mas install 1477089520 # Backtrack
+mas install 1491071483 # Tot
+mas install 1147396723 # WhatsApp
 mas install 1320666476 # Wipr
+mas install 1451685025 # Wireguard
 ```
 Manually install
-* [Loopback Audio](https://rogueamoeba.com/loopback/)
-* [Affinity Photo (login)](https://affinity.serif.com/en-gb/photo/)
 * [Ableton Live (login)](https://www.ableton.com/en/live/)
+* [Affinity Photo (login)](https://affinity.serif.com/en-gb/photo/)
 * [Autodesk Fusion 360 (login)](https://www.autodesk.com/products/fusion-360/overview)
+* [Loopback Audio](https://rogueamoeba.com/loopback/)
 * [Sketchup (online no install)](https://app.sketchup.com/)
 * [Wondershare FilmoraPro](https://filmora.wondershare.com/filmorapro-video-editor/)
 * TODO: [LittleSnitch](https://www.obdev.at/products/littlesnitch/index.html)?
@@ -289,13 +289,12 @@ sdkmanager "platform-tools" "platforms;android-28" "system-images;android-28;def
 # k3d - to create local clusters
 # k9s - Kubernetes CLI To Manage Your Clusters In Style
 brew install \
-kubectl \
-kubectx \
 helm \
-starkandwayne/kubernetes/knative-client \
-#minikube \
 k3d \
-derailed/k9s/k9s
+derailed/k9s/k9s \
+starkandwayne/kubernetes/knative-client \
+kubectl \
+kubectx
 
 # Perhaps try out https://github.com/derailed/popeye
 ```
