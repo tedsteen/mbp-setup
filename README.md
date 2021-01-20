@@ -105,7 +105,7 @@ brew tap filippo.io/age https://filippo.io/age
 brew install age
 
 mas install 1477089520 # Backtrack
-mas install 552383089  # Dashlane
+mas install 1505779553 # Dashlane for Safari
 mas install 668208984  # Giphy capture
 mas install 1319778037 # iStat Menus
 mas install 441258766  # Magnet
