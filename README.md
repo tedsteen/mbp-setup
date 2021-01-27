@@ -333,9 +333,6 @@ sdkmanager --list #to check what's new
 sdkmanager "platform-tools" "platforms;android-XX" "system-images;android-XX;default;x86_64" "build-tools;XX.X.X" # Replace X with newer versions
 # Oh My Zsh
 omz update
-# Oh My Zsh plugins
-cd ~/.oh-my-zsh/custom/plugins/
-for file in */ ; do cd $file; git pull; cd ..; done
-cd ~/.oh-my-zsh/custom/themes/
-for file in */ ; do cd $file; git pull; cd ..; done
+# Oh My Zsh plugins and themes
+for file in ~/.oh-my-zsh/custom/*/*/ ; do zsh -c "cd $file; git pull"; done
 ```
