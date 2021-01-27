@@ -299,3 +299,17 @@ kubectx
 # Perhaps try out https://github.com/derailed/popeye
 ```
 Then add the plugin `kubectl` to `~/.zshrc`
+
+### Upgrading
+```bash
+# Brew itself
+brew update
+# Brew packages
+brew upgrade
+# App Store
+mas upgrade
+# Node
+nvm install node --reinstall-packages-from=node
+# Global node packages
+npm update -g
+```
