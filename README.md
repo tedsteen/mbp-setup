@@ -65,11 +65,7 @@ killall Finder
 killall Dock
 
 ```
-Next install [homebrew](https://brew.sh)  
-and then install some fonts for iTerm and other code things
-```bash
-brew tap homebrew/cask-fonts && brew cask install font-source-code-pro
-```
+Install [homebrew](https://brew.sh)  
 
 ### Some apps
 ```bash
