@@ -138,6 +138,7 @@ quicklook-json
 Follow [this guide](https://gist.github.com/kevin-smets/8568070#file-iterm2-solarized-md) and then add the following plugins to `.zshrc`
 * `docker`
 * [autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh) (needs some reading)
+* [syntax highlighting?](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
 
 #### Other small things
 ```bash
@@ -194,6 +195,19 @@ dev-here() {
   echo $cmd
   eval $cmd
 }
+
+# This speeds up pasting w/ autosuggest
+# https://github.com/zsh-users/zsh-autosuggestions/issues/238
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
 EOF
 ```
 ### Git
@@ -249,7 +263,7 @@ source ~/.zshrc
 ```
 
 ### Node and friends
-Install nvm as [oh-my-zsh-plugin](https://github.com/lukechilds/zsh-nvm#as-an-oh-my-zsh-custom-plugin)  
+Install nvm as [oh-my-zsh-plugin](https://github.com/lukechilds/zsh-nvm#as-an-oh-my-zsh-custom-plugin)
 Then install latest node
 ```bash
 nvm install node
@@ -275,7 +289,7 @@ source ~/.zshrc
 # sdkmanager requires java 8!
 javaopenjdk 8
 sdkmanager --update
-sdkmanager "platform-tools" "platforms;android-28" "system-images;android-28;default;x86_64" "build-tools;28.0.3"
+sdkmanager "platform-tools" "platforms;android-30" "system-images;android-29;default;x86_64" "build-tools;30.0.3"
 ```
 
 ### Kubernetes
@@ -312,4 +326,16 @@ mas upgrade
 nvm install node --reinstall-packages-from=node
 # Global node packages
 npm update -g
+# sdkmanager
+javaopenjdk 8
+sdkmanager --update
+sdkmanager --list #to check what's new
+sdkmanager "platform-tools" "platforms;android-XX" "system-images;android-XX;default;x86_64" "build-tools;XX.X.X" # Replace X with newer versions
+# Oh My Zsh
+omz update
+# Oh My Zsh plugins
+cd ~/.oh-my-zsh/custom/plugins/
+for file in */ ; do cd $file; git pull; cd ..; done
+cd ~/.oh-my-zsh/custom/themes/
+for file in */ ; do cd $file; git pull; cd ..; done
 ```
