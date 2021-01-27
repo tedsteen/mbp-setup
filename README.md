@@ -316,6 +316,8 @@ Then add the plugin `kubectl` to `~/.zshrc`
 brew update
 # Brew packages
 brew upgrade
+# Clean up brew
+brew cleanup
 # App Store
 mas upgrade
 # Node
