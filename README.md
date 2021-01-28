@@ -142,16 +142,16 @@ brew install --cask quicklook-json
 Follow [this guide](https://gist.github.com/kevin-smets/8568070#file-iterm2-solarized-md) and then add the following plugins to `.zshrc`
 * `docker`
 * [autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh) (needs some reading)
-* [syntax highlighting?](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
+* [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
 
 #### Other small things
 ```bash
 cat <<'EOF' >> ~/.zshrc
 alias pls="sudo"
 alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
+alias ls="ls -haln"
 
 # git
-alias ls="ls -haln"
 alias gs="git status"
 alias ga="git add"
 alias gaa="git add -A"
@@ -159,6 +159,7 @@ alias gc="git commit -m"
 alias gd="git diff HEAD"
 alias go="git push -u origin"
 alias gco="git checkout"
+# Pretty git log
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 # All local branches in the order of their last commit
 alias gb="git for-each-ref --sort='-authordate:iso8601' --format=' %(color:green)%(authordate:iso8601)%09%(color:white)%(refname:short)' refs/heads"
@@ -169,12 +170,11 @@ alias gnuke="git reset --hard; git clean -fd"
 alias dkrm='for id in $(docker ps -aq -f status=exited); do docker rm -f $id; done'
 alias dkkill='for id in $(docker ps -q); do docker kill $id; done'
 
+# Serve the current directory over http
 alias serve='python -m SimpleHTTPServer'
 
 alias wget='wget -c'
 alias jcurl='curl -H "Content-Type: application/json" -H "Accept: application/json"'
-
-alias k='kubectl'
 
 encrypt() {
   age -r "$(cat ${1:-~/.ssh/id_rsa.pub})" -
@@ -313,6 +313,8 @@ derailed/k9s/k9s \
 starkandwayne/kubernetes/knative-client \
 kubectl \
 kubectx
+
+echo "alias k='kubectl'" >> ~/.zshrc
 
 # Perhaps try out https://github.com/derailed/popeye
 ```
