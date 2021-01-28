@@ -69,7 +69,7 @@ Install [homebrew](https://brew.sh)
 
 ### Some apps
 ```bash
-brew cask install \
+brew install --cask \
 authy \
 discord \
 docker \
@@ -79,7 +79,6 @@ handbrake \
 iina \
 intellij-idea \
 iterm2  \
-mas \
 numi \
 ocenaudio \
 signal \
@@ -92,6 +91,7 @@ visualvm
 
 brew install \
 jq \
+mas \
 telnet \
 tldr \
 watch \
@@ -126,8 +126,7 @@ Manually install
 
 ### Some quick look plugins
 ```bash
-brew cask install \
-quicklook-json
+brew install --cask quicklook-json
 ```
 
 ### Setup the terminal
@@ -234,7 +233,7 @@ __chjava() {
   CASK=$3
   if [ ! -d "$JAVA_HOME" ]; then
     echo "Java $CASK is not installed, installing..."
-    brew cask install $CASK
+    brew install --cask $CASK
   fi
 
   if [ "$4" = "global" ]; then
@@ -279,7 +278,7 @@ brew install cocoapods
 ```
 #### Android SDK
 ```bash
-brew cask install android-sdk
+brew install --cask android-sdk
 echo "export ANDROID_SDK_ROOT='/usr/local/share/android-sdk'" >> ~/.zshrc
 source ~/.zshrc
 # sdkmanager requires java 8!
@@ -295,7 +294,6 @@ sdkmanager "platform-tools" "platforms;android-30" "system-images;android-29;def
 # kubectx - to easily switch between clusters and environments
 # helm
 # kn - the knative cli
-# #minikube - to create local clusters
 # k3d - to create local clusters
 # k9s - Kubernetes CLI To Manage Your Clusters In Style
 brew install \
@@ -312,6 +310,10 @@ Then add the plugin `kubectl` to `~/.zshrc`
 
 ### Upgrading
 ```bash
+# Oh My Zsh + zsh
+omz update
+# Oh My Zsh plugins and themes
+for file in ~/.oh-my-zsh/custom/*/*/ ; do zsh -c "cd $file; git pull"; done
 # Brew itself
 brew update
 # Brew packages
@@ -329,8 +331,4 @@ javaopenjdk 8
 sdkmanager --update
 sdkmanager --list #to check what's new
 sdkmanager "platform-tools" "platforms;android-XX" "system-images;android-XX;default;x86_64" "build-tools;XX.X.X" # Replace X with newer versions
-# Oh My Zsh
-omz update
-# Oh My Zsh plugins and themes
-for file in ~/.oh-my-zsh/custom/*/*/ ; do zsh -c "cd $file; git pull"; done
 ```
