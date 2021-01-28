@@ -7,8 +7,17 @@ xcode-select --install
 ```
 then Upgrade macOS to latest everything again.
 
+Add `auth sufficient pam_tid.so` to the top of your `/private/etc/pam.d/sudo` file to be able to use TouchID for sudo.
+
 Next set some system preferences
 ```bash
+# Show library folder
+chflags nohidden ~/Library
+# Show hidden files
+defaults write com.apple.finder AppleShowAllFiles YES
+# Show path bar
+defaults write com.apple.finder ShowPathbar -bool true
+
 # Expanding the save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
@@ -73,6 +82,7 @@ brew install --cask \
 authy \
 discord \
 docker \
+dozer \
 google-backup-and-sync \
 grandperspective \
 handbrake \
@@ -84,7 +94,6 @@ ocenaudio \
 signal \
 spotify \
 transmission \
-vanilla \
 virtualbox \
 visual-studio-code \
 visualvm
@@ -139,6 +148,7 @@ Follow [this guide](https://gist.github.com/kevin-smets/8568070#file-iterm2-sola
 ```bash
 cat <<'EOF' >> ~/.zshrc
 alias pls="sudo"
+alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
 
 # git
 alias ls="ls -haln"
@@ -314,12 +324,8 @@ Then add the plugin `kubectl` to `~/.zshrc`
 omz update
 # Oh My Zsh plugins and themes
 for file in ~/.oh-my-zsh/custom/*/*/ ; do zsh -c "cd $file; git pull"; done
-# Brew itself
-brew update
-# Brew packages
-brew upgrade
-# Clean up brew
-brew cleanup
+# Brew
+brewup
 # App Store
 mas upgrade
 # Node
