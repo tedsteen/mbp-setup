@@ -323,17 +323,18 @@ Then add the plugin `kubectl` to `~/.zshrc`
 ### Upgrading
 ```bash
 # Oh My Zsh + zsh
-omz update
+omz update; \
 # Oh My Zsh plugins and themes
-for file in ~/.oh-my-zsh/custom/*/*/ ; do zsh -c "cd $file; git pull"; done
+for file in ~/.oh-my-zsh/custom/*/*/ ; do zsh -c "cd $file; git pull"; done; \
 # Brew
-brewup
+brewup; \
 # App Store
-mas upgrade
+mas upgrade; \
 # Node
-nvm install node --reinstall-packages-from=node
+nvm install node --reinstall-packages-from=node; \
 # Global node packages
 npm update -g
+
 # sdkmanager
 javaopenjdk 8
 sdkmanager --update
