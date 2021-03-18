@@ -114,6 +114,7 @@ mas install 668208984  # Giphy capture
 mas install 1319778037 # iStat Menus
 mas install 441258766  # Magnet
 mas install 1480068668 # Messenger
+mas install 1529448980 # Reeder
 mas install 803453959  # Slack
 mas install 1176895641 # Spark
 mas install 425424353  # The Unarchiver
