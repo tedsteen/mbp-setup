@@ -101,6 +101,7 @@ visualvm
 brew install \
 jq \
 mas \
+svtplay-dl ffmpeg \
 telnet \
 tldr \
 watch \
