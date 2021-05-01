@@ -87,7 +87,6 @@ google-backup-and-sync \
 grandperspective \
 handbrake \
 iina \
-intellij-idea \
 iterm2  \
 numi \
 ocenaudio \
@@ -95,8 +94,7 @@ signal \
 spotify \
 transmission \
 virtualbox \
-visual-studio-code \
-visualvm
+visual-studio-code
 
 brew install \
 jq \
@@ -225,9 +223,12 @@ git config --global user.email "ted.steen@gmail.com"
 git config --global color.ui auto
 ```
 
-#### Java SDKs
+#### Java and the SDKs
 See [this thread](https://stackoverflow.com/questions/52524112/how-do-i-install-java-on-mac-osx-allowing-version-switching/52524114#52524114) or just do this
 ```bash
+
+# Install visualvm
+brew install --cask visualvm
 
 # To list all available versions
 /usr/libexec/java_home -V
