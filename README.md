@@ -222,8 +222,26 @@ git config --global user.name "Ted Steen"
 git config --global user.email "ted.steen@gmail.com"
 git config --global color.ui auto
 ```
+### Rust
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-#### Java and the SDKs
+# Rust analyser - Details [here](https://rust-analyzer.github.io/manual.html#installation)
+rustup component add rust-src
+# Install [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer/tree/master/editors/code) in VSCode
+open https://marketplace.visualstudio.com/items?itemName=matklad.rust-analyzer
+
+# Debugging
+open https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb
+
+# Instrumentation & profiling
+brew install cargo-instruments
+
+# Update
+rustup update
+```
+
+### Java and the SDKs
 See [this thread](https://stackoverflow.com/questions/52524112/how-do-i-install-java-on-mac-osx-allowing-version-switching/52524114#52524114) or just do this
 ```bash
 
@@ -330,6 +348,8 @@ Then add the plugin `kubectl` to `~/.zshrc`
 brewup; \
 # App Store
 mas upgrade; \
+# Rust
+rustup update; \
 # Node
 nvm install node --reinstall-packages-from=node; \
 # Global node packages
