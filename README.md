@@ -221,6 +221,7 @@ EOF
 git config --global user.name "Ted Steen"
 git config --global user.email "ted.steen@gmail.com"
 git config --global color.ui auto
+git config --global pull.rebase false
 ```
 ### Rust
 ```bash
@@ -236,6 +237,9 @@ open https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb
 
 # Instrumentation & profiling
 brew install cargo-instruments
+
+# faster linking
+brew install michaeleisel/zld/zld
 
 # Update
 rustup update
