@@ -171,6 +171,24 @@ alias gnuke="git reset --hard; git clean -fd"
 alias dkrm='for id in $(docker ps -aq -f status=exited); do docker rm -f $id; done'
 alias dkkill='for id in $(docker ps -q); do docker kill $id; done'
 
+# Forward to remote docker.
+# `dkfw user@machine` to forward to remote machine
+# Use `dkfw stop` to revert to local
+dkfw() {
+  pid=$(ps aux | grep "ssh -oStrictHostKeyChecking=no -fNL localhost:2377" | grep -v grep | awk '{print $2}')
+  host=${1:-ted@marati.s3n.io}
+  if [ "$host" = "stop" ] ; then
+    if [ ! -z "$pid" ] ; then kill $pid ; fi
+    unset DOCKER_HOST
+    return 0
+  fi
+
+  if [ -z "$pid" ]; then
+    ssh -oStrictHostKeyChecking=no -fNL localhost:2377:/var/run/docker.sock $host
+    export DOCKER_HOST="localhost:2377"
+  fi
+}
+
 # Serve the current directory over http
 alias serve='python -m SimpleHTTPServer'
 
@@ -348,6 +366,8 @@ Then add the plugin `kubectl` to `~/.zshrc`
 
 ### Upgrading
 ```bash
+# Ruby
+gem update; gem update --system; \
 # Brew
 brewup; \
 # App Store
