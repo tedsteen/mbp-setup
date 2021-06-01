@@ -145,6 +145,26 @@ Follow [this guide](https://gist.github.com/kevin-smets/8568070#file-iterm2-sola
 * [autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh) (needs some reading)
 * [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
 
+#### SSH stuffs
+```bash
+cat <<'EOF' >> ~/.ssh/config
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+EOF
+cat <<'EOF' >> ~/.zshrc
+make_key() {
+  user=$1
+  host=$2
+  kdfs=${3:-100}
+  keyfilename=~/.ssh/${user}_${host}_ed25519
+  ssh-keygen -o -a $kdfs -t ed25519 -f $keyfilename -C "${user}@${host}"
+  ssh-add -K $keyfilename
+  #TODO: for ease of use see ssh config https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54
+}
+EOF
+```
+
 #### Other small things
 ```bash
 cat <<'EOF' >> ~/.zshrc
@@ -196,11 +216,11 @@ alias wget='wget -c'
 alias jcurl='curl -H "Content-Type: application/json" -H "Accept: application/json"'
 
 encrypt() {
-  age -r "$(cat ${1:-~/.ssh/id_rsa.pub})" -
+  age -r "$(cat ${1:-~/.ssh/ted_random_ed25519.pub})" -
 }
 
 decrypt() {
-  age -d -i ${1:-~/.ssh/id_rsa} -
+  age -d -i ${1:-~/.ssh/ted_random_ed25519} -
 }
 
 dev-here() {
@@ -240,6 +260,19 @@ git config --global user.name "Ted Steen"
 git config --global user.email "ted.steen@gmail.com"
 git config --global color.ui auto
 git config --global pull.rebase false
+```
+### Python
+```bash
+brew install pyenv
+pyenv install <version>
+pyenv global <version>
+echo -e '
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+' > ~/.zprofile
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
+
 ```
 ### Rust
 ```bash
