@@ -169,7 +169,6 @@ EOF
 ```bash
 cat <<'EOF' >> ~/.zshrc
 alias pls="sudo"
-alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
 alias ls="ls -haln"
 
 # git
@@ -272,7 +271,15 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 ' > ~/.zprofile
 echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
+pip install pip-review
+```
 
+### Ruby
+```bash
+brew install rbenv
+rbenv install <version>
+rbenv global <version>
+echo 'eval "$(rbenv init -)"' >> ~/.zshrc
 ```
 ### Rust
 ```bash
@@ -291,9 +298,6 @@ brew install cargo-instruments
 
 # faster linking
 brew install michaeleisel/zld/zld
-
-# Update
-rustup update
 ```
 
 ### Java and the SDKs
@@ -399,6 +403,10 @@ Then add the plugin `kubectl` to `~/.zshrc`
 
 ### Upgrading
 ```bash
+alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
+alias pipup="pip-review --local --auto"
+alias nodeup="nvm install node --reinstall-packages-from=node; npm update -g"
+
 # Ruby
 gem update; gem update --system; \
 # Brew
@@ -408,9 +416,9 @@ mas upgrade; \
 # Rust
 rustup update; \
 # Node
-nvm install node --reinstall-packages-from=node; \
-# Global node packages
-npm update -g; \
+nodeup; \
+# Python
+pipup; \
 # Oh My Zsh plugins and themes
 for file in ~/.oh-my-zsh/custom/*/*/ ; do zsh -c "cd $file; git pull"; done; \
 # Oh My Zsh + zsh
