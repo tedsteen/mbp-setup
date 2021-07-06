@@ -406,6 +406,7 @@ Then add the plugin `kubectl` to `~/.zshrc`
 alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
 alias pipup="pip-review --local --auto"
 alias nodeup="nvm install node --reinstall-packages-from=node; npm update -g"
+alias omzcustomup='for file in ~/.oh-my-zsh/custom/*/*/ ; do zsh -c "cd $file; git pull"; done;'
 
 # Ruby
 gem update; gem update --system; \
@@ -420,7 +421,7 @@ nodeup; \
 # Python
 pipup; \
 # Oh My Zsh plugins and themes
-for file in ~/.oh-my-zsh/custom/*/*/ ; do zsh -c "cd $file; git pull"; done; \
+omzcustomup; \
 # Oh My Zsh + zsh
 omz update
 
