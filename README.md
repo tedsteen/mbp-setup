@@ -404,7 +404,7 @@ Then add the plugin `kubectl` to `~/.zshrc`
 ### Upgrading
 ```bash
 alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
-alias pipup="pip-review --local --auto"
+alias pipup="pip-review --local --auto; python -m pip install --upgrade pip"
 alias nodeup="nvm install node --reinstall-packages-from=node; npm update -g"
 alias omzcustomup='for file in ~/.oh-my-zsh/custom/*/*/ ; do zsh -c "cd $file; git pull"; done;'
 
