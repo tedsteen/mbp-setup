@@ -97,6 +97,7 @@ virtualbox \
 visual-studio-code
 
 brew install \
+fswatch \
 jq \
 mas \
 svtplay-dl ffmpeg \
@@ -209,7 +210,7 @@ dkfw() {
 }
 
 # Serve the current directory over http
-alias serve='python -m SimpleHTTPServer'
+alias serve='python -m http.server'
 
 alias wget='wget -c'
 alias jcurl='curl -H "Content-Type: application/json" -H "Accept: application/json"'
@@ -281,6 +282,13 @@ rbenv install <version>
 rbenv global <version>
 echo 'eval "$(rbenv init -)"' >> ~/.zshrc
 ```
+
+### NES
+```bash
+brew install cc65
+brew install fceux
+```
+
 ### Rust
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
