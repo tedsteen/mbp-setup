@@ -1,15 +1,21 @@
-### Generic provisioning
+# Provision my MacBook Pro
+
+## Generic provisioning
+
 Read [this article](https://medium.com/@tretuna/macbook-pro-web-developer-setup-from-clean-slate-to-dev-machine-1befd4121ba8) about setting up a web dev-MBP and then [this article](https://dev.to/oryanmoshe/i-spend-one-hour-a-week-optimizing-my-development-environment-l9a) about optimising your dev-workflow on the MBP.
 
 First upgrade macOS to latest everything and then
+
 ```bash
 xcode-select --install
 ```
+
 then Upgrade macOS to latest everything again.
 
 Add `auth sufficient pam_tid.so` to the top of your `/private/etc/pam.d/sudo` file to be able to use TouchID for sudo.
 
 Next set some system preferences
+
 ```bash
 # Show library folder
 chflags nohidden ~/Library
@@ -74,9 +80,11 @@ killall Finder
 killall Dock
 
 ```
+
 Install [homebrew](https://brew.sh)  
 
-### Some apps
+## Some apps
+
 ```bash
 brew install --cask \
 authy \
@@ -125,7 +133,9 @@ mas install 1147396723 # WhatsApp
 mas install 1320666476 # Wipr
 mas install 1451685025 # Wireguard
 ```
-Manually install
+
+## Manually install
+
 * [Ableton Live (login)](https://www.ableton.com/en/live/)
 * [Affinity Photo (login)](https://affinity.serif.com/en-gb/photo/)
 * [Autodesk Fusion 360 (login)](https://www.autodesk.com/products/fusion-360/overview)
@@ -134,19 +144,23 @@ Manually install
 * [Wondershare FilmoraPro](https://filmora.wondershare.com/filmorapro-video-editor/)
 * TODO: [LittleSnitch](https://www.obdev.at/products/littlesnitch/index.html)?
 
-### Some quick look plugins
+## Some quick look plugins
+
 ```bash
 brew install --cask quicklook-json
 ```
 
-### Setup the terminal
+## Setup the terminal
+
 Follow [this guide](https://gist.github.com/kevin-smets/8568070#file-iterm2-solarized-md) and then add the following plugins to `.zshrc`
+
 * `docker`
 * `git`
 * [autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh) (needs some reading)
 * [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
 
-#### SSH stuffs
+### SSH stuffs
+
 ```bash
 cat <<'EOF' >> ~/.ssh/config
 Host *
@@ -166,7 +180,8 @@ make_key() {
 EOF
 ```
 
-#### Other small things
+### Other small things
+
 ```bash
 cat <<'EOF' >> ~/.zshrc
 alias pls="sudo"
@@ -254,14 +269,18 @@ zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 EOF
 ```
-### Git
+
+## Git
+
 ```bash
 git config --global user.name "Ted Steen"
 git config --global user.email "ted.steen@gmail.com"
 git config --global color.ui auto
 git config --global pull.rebase false
 ```
-### Python
+
+## Python
+
 ```bash
 brew install pyenv
 pyenv install <version>
@@ -275,7 +294,8 @@ echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nf
 pip install pip-review
 ```
 
-### Ruby
+## Ruby
+
 ```bash
 brew install rbenv
 rbenv install <version>
@@ -283,13 +303,15 @@ rbenv global <version>
 echo 'eval "$(rbenv init -)"' >> ~/.zshrc
 ```
 
-### NES
+## NES Dev
+
 ```bash
 brew install cc65
 brew install fceux
 ```
 
-### Rust
+## Rust
+
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -306,12 +328,16 @@ brew install cargo-instruments
 
 # faster linking
 brew install michaeleisel/zld/zld
+
+# Wasm stuff
+brew install wasm-pack
 ```
 
 ### Java and the SDKs
-See [this thread](https://stackoverflow.com/questions/52524112/how-do-i-install-java-on-mac-osx-allowing-version-switching/52524114#52524114) or just do this
-```bash
 
+See [this thread](https://stackoverflow.com/questions/52524112/how-do-i-install-java-on-mac-osx-allowing-version-switching/52524114#52524114) or just do this
+
+```bash
 # Install visualvm
 brew install --cask visualvm
 
@@ -356,26 +382,35 @@ EOF
 source ~/.zshrc
 ```
 
-### Node and friends
+## Node and friends
+
 Install nvm as [oh-my-zsh-plugin](https://github.com/lukechilds/zsh-nvm#as-an-oh-my-zsh-custom-plugin)
 Then install latest node
+
 ```bash
 nvm install node
 ```
+
 Then add the plugin `npm` to `~/.zshrc`
 
-### React native
+## React native
+
  Make sure Node and friends are installed (see above).
+
 ```bash
 echo "alias react-native='npx react-native'" >> ~/.zshrc
 brew install watchman
 ```
-#### iOS SDK
+
+### iOS SDK
+
 ```bash
 mas install 497799835 # Xcode
 brew install cocoapods
 ```
-#### Android SDK
+
+### Android SDK
+
 ```bash
 brew install --cask android-sdk
 echo "export ANDROID_SDK_ROOT='/usr/local/share/android-sdk'" >> ~/.zshrc
@@ -386,7 +421,8 @@ sdkmanager --update
 sdkmanager "platform-tools" "platforms;android-30" "system-images;android-29;default;x86_64" "build-tools;30.0.3"
 ```
 
-### Kubernetes
+## Kubernetes
+
 ```bash
 # Install in order:
 # kubectl - the kubernetes cli
@@ -407,9 +443,11 @@ echo "alias k='kubectl'" >> ~/.zshrc
 
 # Perhaps try out https://github.com/derailed/popeye
 ```
+
 Then add the plugin `kubectl` to `~/.zshrc`
 
-### Upgrading
+## Upgrading
+
 ```bash
 alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
 alias pipup="pip-review --local --auto; python -m pip install --upgrade pip"
