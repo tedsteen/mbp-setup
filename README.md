@@ -162,11 +162,49 @@ Follow [this guide](https://gist.github.com/kevin-smets/8568070#file-iterm2-sola
 ### SSH stuffs
 
 ```bash
+# Upgrade ssh to be able to use ed25519-sk
+
+brew install openssh
+launchctl disable user/$UID/com.openssh.ssh-agent
+cat <<'EOF' >> ~/Library/LaunchAgents/com.zerowidth.launched.ssh_agent.plist
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.zerowidth.launched.ssh_agent</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>sh</string>
+    <string>-c</string>
+    <string>/usr/local/bin/ssh-agent -D -a ~/.ssh/agent</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+</dict>
+</plist>
+EOF
+launchctl load -w ~/Library/LaunchAgents/com.zerowidth.launched.ssh_agent.plist
+
+# Configure ssh to store passwords in keychain and add some default keys
 cat <<'EOF' >> ~/.ssh/config
 Host *
-  AddKeysToAgent yes
+  IgnoreUnknown UseKeychain
   UseKeychain yes
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/ted_random_ed25519
+  IdentitiesOnly yes
+
+Host rp.marati4-20.s3n.io
+  IdentityFile ~/.ssh/ted_rp_ed25519
+
+Host gitlab
+  HostName gitlab.com
+  User git
+  IdentityFile ~/.ssh/ted_random_ed25519
+  IdentitiesOnly yes
 EOF
+
 cat <<'EOF' >> ~/.zshrc
 make_key() {
   user=$1
