@@ -132,6 +132,7 @@ mas install 1491071483 # Tot
 mas install 1147396723 # WhatsApp
 mas install 1320666476 # Wipr
 mas install 1451685025 # Wireguard
+mas install 1497506650 # Yubico Authenticator
 ```
 
 ## Manually install
@@ -207,13 +208,19 @@ EOF
 
 cat <<'EOF' >> ~/.zshrc
 make_key() {
-  user=$1
-  host=$2
-  kdfs=${3:-100}
-  keyfilename=~/.ssh/${user}_${host}_ed25519
-  ssh-keygen -o -a $kdfs -t ed25519 -f $keyfilename -C "${user}@${host}"
-  ssh-add -K $keyfilename
-  #TODO: for ease of use see ssh config https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54
+  name=$1
+  kdfs=${2:-100}
+  type=${3:-ed25519}
+  keyfilename=~/.ssh/$name
+  
+  ssh-keygen -a $kdfs -t $type -f $keyfilename -C "${name}"
+}
+
+make_key_yubikey() {
+    name=$1_yubikey_$2
+    kdfs=${3:-100}
+    keyfilename=~/.ssh/$name
+    ssh-keygen -a $kdfs -t ed25519-sk -f $keyfilename -C "${name}"
 }
 EOF
 ```
