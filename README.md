@@ -365,6 +365,9 @@ rustup component add rust-src
 # Install [rust-analyzer](https://github.com/rust-analyzer/rust-analyzer/tree/master/editors/code) in VSCode
 open https://marketplace.visualstudio.com/items?itemName=matklad.rust-analyzer
 
+# linter
+rustup component add clippy
+
 # Debugging
 open https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb
 
@@ -499,14 +502,14 @@ alias pipup="pip-review --local --auto; python -m pip install --upgrade pip"
 alias nodeup="nvm install node --reinstall-packages-from=node; npm update -g"
 alias omzcustomup='for file in ~/.oh-my-zsh/custom/*/*/ ; do zsh -c "cd $file; git pull"; done;'
 
-# Ruby
-gem update; gem update --system; \
 # Brew
 brewup; \
+# Ruby
+gem update; gem update --system; \
 # App Store
 mas upgrade; \
 # Rust
-rustup update; \
+rustup self update; rustup update; \
 # Node
 nodeup; \
 # Python
