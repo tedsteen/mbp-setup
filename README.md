@@ -12,11 +12,12 @@ xcode-select --install
 
 then Upgrade macOS to latest everything again.
 
-Add `auth sufficient pam_tid.so` to the top of your `/private/etc/pam.d/sudo` file to be able to use TouchID for sudo.
-
 Next set some system preferences
 
 ```bash
+# Make it possible to authenticate with Touch ID for sudo
+sudo -- sh -c 'echo "auth sufficient pam_tid.so\n$(cat /etc/pam.d/sudo)" > /etc/pam.d/sudo'
+
 # Show library folder
 chflags nohidden ~/Library
 # Show hidden files
