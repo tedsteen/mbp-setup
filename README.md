@@ -108,6 +108,7 @@ visual-studio-code
 brew install \
 fswatch \
 jq \
+lazydocker \
 lazygit \
 mas \
 svtplay-dl ffmpeg \
