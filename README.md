@@ -90,7 +90,7 @@ brew install --cask \
 authy \
 discord \
 docker \
-dozer \
+# dozer \
 google-drive \
 grandperspective \
 handbrake \
