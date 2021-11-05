@@ -108,6 +108,7 @@ visual-studio-code
 brew install \
 fswatch \
 jq \
+lazygit \
 mas \
 svtplay-dl ffmpeg \
 telnet \
