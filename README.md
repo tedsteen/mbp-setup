@@ -95,7 +95,6 @@ Install [homebrew](https://brew.sh)
 brew install --cask \
 authy \
 discord \
-docker \
 # dozer \
 google-drive \
 grandperspective \
@@ -112,6 +111,8 @@ virtualbox \
 visual-studio-code
 
 brew install \
+docker \
+docker-compose \
 fswatch \
 jq \
 lazydocker \
