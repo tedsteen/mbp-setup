@@ -256,17 +256,19 @@ alias dkkill='for id in $(docker ps -q); do docker kill $id; done'
 # `dkfw user@machine` to forward to remote machine
 # Use `dkfw stop` to revert to local
 dkfw() {
-  pid=$(ps aux | grep "ssh -oStrictHostKeyChecking=no -fNL localhost:2377" | grep -v grep | awk '{print $2}')
   host=${1:-ted@marati.s3n.io}
   if [ "$host" = "stop" ] ; then
-    if [ ! -z "$pid" ] ; then kill $pid ; fi
+    if [ ! -z "$DOCKER_FW_SSH_PID" ] ; then kill $DOCKER_FW_SSH_PID; fi
+    rm -f /tmp/docker-fw.sock
     unset DOCKER_HOST
+    unset DOCKER_FW_SSH_PID
     return 0
   fi
 
-  if [ -z "$pid" ]; then
-    ssh -oStrictHostKeyChecking=no -fNL localhost:2377:/var/run/docker.sock $host
-    export DOCKER_HOST="localhost:2377"
+  if [ -z "$DOCKER_FW_SSH_PID" ]; then
+    ssh -L /tmp/docker-fw.sock:/var/run/docker.sock $host -oStrictHostKeyChecking=no -N &
+    export DOCKER_FW_SSH_PID=$!
+    export DOCKER_HOST=unix:///tmp/docker-fw.sock
   fi
 }
 
