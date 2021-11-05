@@ -98,6 +98,7 @@ iina \
 iterm2  \
 numi \
 ocenaudio \
+rectangle \
 signal \
 spotify \
 transmission \
@@ -121,7 +122,6 @@ mas install 1477089520 # Backtrack
 mas install 1370791134 # DigiDoc4 Client
 mas install 668208984  # Giphy capture
 mas install 1319778037 # iStat Menus
-mas install 441258766  # Magnet
 mas install 1480068668 # Messenger
 mas install 1529448980 # Reeder
 mas install 803453959  # Slack
