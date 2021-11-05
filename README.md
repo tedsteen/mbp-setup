@@ -24,9 +24,11 @@ Next set some system preferences
 sudo -- sh -c 'echo "auth sufficient pam_tid.so\n$(cat /etc/pam.d/sudo)" > /etc/pam.d/sudo'
 
 # Show library folder
-chflags nohidden ~/Library
+# chflags nohidden ~/Library
+
 # Show hidden files
-defaults write com.apple.finder AppleShowAllFiles YES
+# defaults write com.apple.finder AppleShowAllFiles YES
+
 # Show path bar
 defaults write com.apple.finder ShowPathbar -bool true
 
@@ -46,7 +48,7 @@ defaults write -g com.apple.trackpad.scaling 2
 defaults write -g com.apple.mouse.scaling 2.5
 
 # Showing all filename extensions in Finder by default
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+# defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Disabling the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
@@ -56,11 +58,6 @@ defaults write com.apple.finder FXPreferredViewStyle Clmv
 
 # Avoiding the creation of .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-
-# Enabling snap-to-grid for icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 
 # Speeding up Mission Control animations and grouping windows by application
 defaults write com.apple.dock expose-animation-duration -float 0.1
@@ -76,9 +73,6 @@ defaults write com.apple.dock tilesize -int 36
 
 # Preventing Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
-
-# Disable the sudden motion sensor as its not useful for SSDs
-sudo pmset -a sms 0
 
 # restart finder to apply finder things
 killall Finder
