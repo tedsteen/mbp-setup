@@ -2,7 +2,7 @@
 
 ## Generic provisioning
 
-Read [this article](https://medium.com/@tretuna/macbook-pro-web-developer-setup-from-clean-slate-to-dev-machine-1befd4121ba8) about setting up a web dev-MBP and then [this article](https://dev.to/oryanmoshe/i-spend-one-hour-a-week-optimizing-my-development-environment-l9a) about optimising your dev-workflow on the MBP.
+Based on many things but most recently [this article](https://betterprogramming.pub/how-to-set-up-your-macbook-for-web-development-in-2021-a7a1f53f6462).
 
 First upgrade macOS to latest everything and then
 
@@ -11,6 +11,11 @@ xcode-select --install
 ```
 
 then Upgrade macOS to latest everything again.
+And then just to be sure do:
+
+```bash
+softwareupdate --all --install --force
+```
 
 Next set some system preferences
 
@@ -64,7 +69,7 @@ defaults write com.apple.dock "expose-group-by-app" -bool true
 # Setting Dock to auto-hide and removing the auto-hiding delay
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock autohide-delay -float 0
-defaults write com.apple.dock autohide-time-modifier -float .1
+defaults write com.apple.dock autohide-time-modifier -float .5
 
 # Setting the icon size of Dock items to 36 pixels for optimal size/screen-realestate
 defaults write com.apple.dock tilesize -int 36
