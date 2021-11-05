@@ -91,7 +91,7 @@ authy \
 discord \
 docker \
 dozer \
-google-backup-and-sync \
+google-drive \
 grandperspective \
 handbrake \
 iina \
