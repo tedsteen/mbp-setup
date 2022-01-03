@@ -29,8 +29,15 @@ sudo -- sh -c 'echo "auth sufficient pam_tid.so\n$(cat /etc/pam.d/sudo)" > /etc/
 # Show hidden files
 # defaults write com.apple.finder AppleShowAllFiles YES
 
+# Keyboard repeat and delay speeds
+defaults write -g InitialKeyRepeat -int 15
+defaults write -g KeyRepeat -int 2
+
 # Show path bar
 defaults write com.apple.finder ShowPathbar -bool true
+
+# Keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
 # Expanding the save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -83,12 +90,23 @@ killall Dock
 
 Install [homebrew](https://brew.sh)  
 
+## Setup the terminal
+
+Follow [this guide](https://gist.github.com/kevin-smets/8568070#file-iterm2-solarized-md) and then add the following plugins to `.zshrc`
+
+* `docker`
+* `git`
+* [autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh)
+* [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh)
+
 ## Some apps
 
 ```bash
 brew install --cask \
 authy \
+brave-browser \
 discord \
+docker \
 # dozer \
 google-drive \
 grandperspective \
@@ -105,7 +123,7 @@ virtualbox \
 visual-studio-code
 
 brew install \
-docker \
+age \
 docker-compose \
 fswatch \
 jq \
@@ -117,9 +135,6 @@ telnet \
 tldr \
 watch \
 wget
-
-brew tap filippo.io/age https://filippo.io/age
-brew install age
 
 mas install 1477089520 # Backtrack
 mas install 1370791134 # DigiDoc4 Client
@@ -153,15 +168,6 @@ mas install 1497506650 # Yubico Authenticator
 ```bash
 brew install --cask quicklook-json
 ```
-
-## Setup the terminal
-
-Follow [this guide](https://gist.github.com/kevin-smets/8568070#file-iterm2-solarized-md) and then add the following plugins to `.zshrc`
-
-* `docker`
-* `git`
-* [autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh) (needs some reading)
-* [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
 
 ### SSH stuffs
 
