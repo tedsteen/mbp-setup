@@ -202,16 +202,16 @@ Host *
   IgnoreUnknown UseKeychain
   UseKeychain yes
   AddKeysToAgent yes
-  IdentityFile ~/.ssh/ted_random_ed25519
+  IdentityFile ~/.ssh/random
   IdentitiesOnly yes
 
 Host rp.marati4-20.s3n.io
-  IdentityFile ~/.ssh/ted_rp_ed25519
+  IdentityFile ~/.ssh/rp_yubikey_17118171
 
 Host gitlab
   HostName gitlab.com
   User git
-  IdentityFile ~/.ssh/ted_random_ed25519
+  IdentityFile ~/.ssh/random
   IdentitiesOnly yes
 EOF
 
