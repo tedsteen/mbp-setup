@@ -92,7 +92,7 @@ Install [homebrew](https://brew.sh)
 
 ## Setup the terminal
 
-Follow [this guide](https://gist.github.com/kevin-smets/8568070#file-iterm2-solarized-md) and then add the following plugins to `.zshrc`
+[Setup zsh + oh-my-zsh + Powerlevel10k](https://betterprogramming.pub/how-to-set-up-your-macbook-for-web-development-in-2021-a7a1f53f6462#a175) and then add the following plugins to `.zshrc`
 
 * `docker`
 * `git`
@@ -287,11 +287,11 @@ alias wget='wget -c'
 alias jcurl='curl -H "Content-Type: application/json" -H "Accept: application/json"'
 
 encrypt() {
-  age -r "$(cat ${1:-~/.ssh/ted_random_ed25519.pub})" -
+  age -r "$(cat ${1:-~/.ssh/random.pub})" -
 }
 
 decrypt() {
-  age -d -i ${1:-~/.ssh/ted_random_ed25519} -
+  age -d -i ${1:-~/.ssh/random} -
 }
 
 dev-here() {
@@ -443,11 +443,8 @@ source ~/.zshrc
 
 ## Node and friends
 
-Install nvm as [oh-my-zsh-plugin](https://github.com/lukechilds/zsh-nvm#as-an-oh-my-zsh-custom-plugin)
-Then install latest node
-
 ```bash
-nvm install node
+brew install node
 ```
 
 Then add the plugin `npm` to `~/.zshrc`
@@ -509,8 +506,8 @@ Then add the plugin `kubectl` to `~/.zshrc`
 
 ```bash
 alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
-alias pipup="python -m pip install --upgrade pip; pip-review --local --auto"
-alias nodeup="nvm install node --reinstall-packages-from=node; npm update -g"
+#alias pipup="python -m pip install --upgrade pip; pip-review --local --auto"
+#alias nodeup="nvm install node --reinstall-packages-from=node; npm update -g"
 alias omzcustomup='for file in ~/.oh-my-zsh/custom/*/*/ ; do zsh -c "cd $file; git pull"; done;'
 
 # MacOS stuff
@@ -518,15 +515,15 @@ softwareupdate --all --install --force; \
 # Brew
 brewup; \
 # Ruby
-gem update; gem update --system; \
+#gem update; gem update --system; \
 # App Store
 mas upgrade; \
 # Rust
 rustup self update; rustup update; \
 # Node
-nodeup; \
+#nodeup; \
 # Python
-pipup; \
+#pipup; \
 # Oh My Zsh plugins and themes
 omzcustomup; \
 # Oh My Zsh + zsh
