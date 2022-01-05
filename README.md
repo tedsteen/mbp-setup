@@ -70,6 +70,16 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.dock expose-animation-duration -float 0.1
 defaults write com.apple.dock "expose-group-by-app" -bool true
 
+# Enable App Exposé                                                                                                       12:18:00
+# Swipe down with three/four fingers
+defaults write com.apple.dock showAppExposeGestureEnabled -bool true
+
+# Enable `Tap to click`
+defaults write com.apple.AppleMultitouchTrackpad.plist Clicking -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
 # Setting Dock to auto-hide and removing the auto-hiding delay
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock autohide-delay -float 0
