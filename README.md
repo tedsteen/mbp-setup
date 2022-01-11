@@ -156,7 +156,6 @@ mas install 803453959  # Slack
 mas install 1176895641 # Spark
 mas install 425424353  # The Unarchiver
 mas install 966085870  # Ticktick
-mas install 1491071483 # Tot
 mas install 1147396723 # WhatsApp
 mas install 1320666476 # Wipr
 mas install 1451685025 # Wireguard
@@ -515,15 +514,11 @@ Then add the plugin `kubectl` to `~/.zshrc`
 ## Upgrading
 
 ```bash
-alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
-#alias pipup="python -m pip install --upgrade pip; pip-review --local --auto"
-#alias nodeup="nvm install node --reinstall-packages-from=node; npm update -g"
-alias omzcustomup='for file in ~/.oh-my-zsh/custom/*/*/ ; do zsh -c "cd $file; git pull"; done;'
 
 # MacOS stuff
 softwareupdate --all --install --force; \
 # Brew
-brewup; \
+brew update; brew upgrade; brew cleanup; brew doctor; \
 # Ruby
 #gem update; gem update --system; \
 # App Store
@@ -531,11 +526,12 @@ mas upgrade; \
 # Rust
 rustup self update; rustup update; \
 # Node
-#nodeup; \
+#nvm install node --reinstall-packages-from=node; npm update -g; \
+npm update -g; npm audit fix; \
 # Python
-#pipup; \
+#python -m pip install --upgrade pip; pip-review --local --auto; \
 # Oh My Zsh plugins and themes
-omzcustomup; \
+for file in ~/.oh-my-zsh/custom/*/*/ ; do zsh -c "cd $file; git pull"; done; \
 # Oh My Zsh + zsh
 omz update
 
