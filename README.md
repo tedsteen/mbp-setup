@@ -118,6 +118,7 @@ brave-browser \
 discord \
 docker \
 # dozer \
+balenaetcher \
 google-drive \
 grandperspective \
 handbrake \
@@ -130,7 +131,8 @@ signal \
 spotify \
 transmission \
 virtualbox \
-visual-studio-code
+visual-studio-code \
+workflowy
 
 brew install \
 age \
@@ -348,14 +350,16 @@ git config --global pull.rebase false
 
 ```bash
 brew install pyenv
+pyenv install --list # See available versions
 pyenv install <version>
-pyenv global <version>
+pyenv global <version> # Set global version
 echo -e '
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-' > ~/.zprofile
-echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
+export PYENV_ROOT="$HOME/.pyenv" 
+export PATH="$PYENV_ROOT/bin:$PATH" 
+eval "$(pyenv init --path)" 
+eval "$(pyenv init -)"
+' >> ~/.zshrc
+
 pip install pip-review
 ```
 
@@ -529,7 +533,7 @@ rustup self update; rustup update; \
 #nvm install node --reinstall-packages-from=node; npm update -g; \
 npm update -g; npm audit fix; \
 # Python
-#python -m pip install --upgrade pip; pip-review --local --auto; \
+python -m pip install --upgrade pip; pip-review --local --auto; \
 # Oh My Zsh plugins and themes
 for file in ~/.oh-my-zsh/custom/*/*/ ; do zsh -c "cd $file; git pull"; done; \
 # Oh My Zsh + zsh
