@@ -358,6 +358,8 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH" 
 eval "$(pyenv init --path)" 
 eval "$(pyenv init -)"
+# Fixes `brew doctor` warning, see https://github.com/pyenv/pyenv#homebrew-in-macos 
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 ' >> ~/.zshrc
 
 pip install pip-review
@@ -531,7 +533,7 @@ mas upgrade; \
 rustup self update; rustup update; \
 # Node
 #nvm install node --reinstall-packages-from=node; npm update -g; \
-npm update -g; npm audit fix; \
+npm update -g; \
 # Python
 python -m pip install --upgrade pip; pip-review --local --auto; \
 # Oh My Zsh plugins and themes
