@@ -129,6 +129,7 @@ ocenaudio \
 rectangle \
 signal \
 spotify \
+stats \
 transmission \
 virtualbox \
 visual-studio-code \
@@ -151,7 +152,7 @@ wget
 mas install 1477089520 # Backtrack
 mas install 1370791134 # DigiDoc4 Client
 mas install 668208984  # Giphy capture
-mas install 1319778037 # iStat Menus
+#mas install 1319778037 # iStat Menus
 mas install 1480068668 # Messenger
 mas install 1529448980 # Reeder
 mas install 803453959  # Slack
