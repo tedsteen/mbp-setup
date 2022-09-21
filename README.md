@@ -155,7 +155,7 @@ mas install 668208984  # Giphy capture
 #mas install 1319778037 # iStat Menus
 mas install 1480068668 # Messenger
 mas install 1529448980 # Reeder
-mas install 803453959  # Slack
+#mas install 803453959  # Slack
 mas install 1176895641 # Spark
 mas install 425424353  # The Unarchiver
 mas install 966085870  # Ticktick
@@ -345,6 +345,7 @@ git config --global user.name "Ted Steen"
 git config --global user.email "ted.steen@gmail.com"
 git config --global color.ui auto
 git config --global pull.rebase false
+git config --global remote.origin.prune true
 ```
 
 ## Python
@@ -406,6 +407,10 @@ brew install michaeleisel/zld/zld
 
 # Wasm stuff
 brew install wasm-pack
+
+# Install latest llvm (for better compatability with rusts newer version)
+brew install llvm
+echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc
 ```
 
 ### Java and the SDKs
