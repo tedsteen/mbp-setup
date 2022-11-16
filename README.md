@@ -345,7 +345,7 @@ git config --global user.name "Ted Steen"
 git config --global user.email "ted.steen@gmail.com"
 git config --global color.ui auto
 git config --global pull.rebase false
-git config --global remote.origin.prune true
+git config --global fetch.prune true
 git config --global push.autoSetupRemote true
 ```
 
