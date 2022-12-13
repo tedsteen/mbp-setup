@@ -387,7 +387,7 @@ brew install fceux
 ## Rust
 
 ```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl https://sh.rustup.rs -sSf | sh
 
 # Rust analyser - Details [here](https://rust-analyzer.github.io/manual.html#installation)
 rustup component add rust-src
