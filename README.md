@@ -2,20 +2,27 @@
 
 ## Generic provisioning
 
+Get the Svorak keyboard layout in place
+
+```bash
+sudo curl "https://gitlab.com/tedsteen/env/-/raw/master/Swedish-Svorak.keylayout?inline=false" -o "/Library/Keyboard Layouts/Swedish-Svorak.keylayout"
+```
+
 Based on many things but most recently [this article](https://betterprogramming.pub/how-to-set-up-your-macbook-for-web-development-in-2021-a7a1f53f6462).
 
-First upgrade macOS to latest everything and then
+First upgrade macOS to latest everything
+
+```bash
+softwareupdate --all --install --force
+```
+
+and then install developer tools
 
 ```bash
 xcode-select --install
 ```
 
-then Upgrade macOS to latest everything again.
-And then just to be sure do:
-
-```bash
-softwareupdate --all --install --force
-```
+then upgrade macOS to latest everything again just to be sure...
 
 Next set some system preferences
 
