@@ -146,8 +146,6 @@ age \
 docker-compose \
 fswatch \
 jq \
-lazydocker \
-lazygit \
 mas \
 svtplay-dl ffmpeg \
 telnet \
