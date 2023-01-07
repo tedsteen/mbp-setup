@@ -120,7 +120,6 @@ Install [homebrew](https://brew.sh)
 
 ```bash
 brew install --cask \
-authy \
 brave-browser \
 discord \
 docker \
