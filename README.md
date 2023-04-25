@@ -109,12 +109,33 @@ Install [homebrew](https://brew.sh)
 
 ## Setup the terminal
 
-[Setup zsh + oh-my-zsh + Powerlevel10k](https://betterprogramming.pub/how-to-set-up-your-macbook-for-web-development-in-2021-a7a1f53f6462#a175) and then add the following plugins to `.zshrc`
+```bash
+# Install latest zsh
+brew install zsh
+# Allow to use homebrews zsh as shell
+echo "/opt/homebrew/bin/zsh" | sudo tee -a /etc/shells > /dev/null
+# Switch to new zsh
+chsh -s /opt/homebrew/bin/zsh
 
-* `docker`
-* `git`
-* [autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh)
-* [syntax highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh)
+brew install romkatv/powerlevel10k/powerlevel10k
+echo "source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
+
+brew install zsh-syntax-highlighting
+echo "source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+
+brew install zsh-autosuggestions
+echo "source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+
+brew install zsh-history-substring-search
+echo "source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh" >> ~/.zshrc
+
+# Enable autocomplete
+echo "autoload -Uz compinit && compinit" >> ~/.zshrc
+# Allow comments in the command line
+echo "setopt interactivecomments" >> ~/.zshrc
+
+# Now restart the terminal or source ~/.zshrc
+```
 
 ## Some apps
 
@@ -531,7 +552,6 @@ Then add the plugin `kubectl` to `~/.zshrc`
 ## Upgrading
 
 ```bash
-
 # MacOS stuff
 softwareupdate --all --install --force; \
 # Brew
@@ -543,14 +563,9 @@ mas upgrade; \
 # Rust
 rustup self update; rustup update; \
 # Node
-#nvm install node --reinstall-packages-from=node; npm update -g; \
 npm update -g; \
 # Python
 python -m pip install --upgrade pip; pip-review --local --auto; \
-# Oh My Zsh plugins and themes
-for file in ~/.oh-my-zsh/custom/*/*/ ; do zsh -c "cd $file; git pull"; done; \
-# Oh My Zsh + zsh
-omz update
 
 # sdkmanager
 javaopenjdk 8
