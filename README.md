@@ -524,31 +524,6 @@ sdkmanager --update
 sdkmanager "platform-tools" "platforms;android-30" "system-images;android-29;default;x86_64" "build-tools;30.0.3"
 ```
 
-## Kubernetes
-
-```bash
-# Install in order:
-# kubectl - the kubernetes cli
-# kubectx - to easily switch between clusters and environments
-# helm
-# kn - the knative cli
-# k3d - to create local clusters
-# k9s - Kubernetes CLI To Manage Your Clusters In Style
-brew install \
-helm \
-k3d \
-derailed/k9s/k9s \
-starkandwayne/kubernetes/knative-client \
-kubectl \
-kubectx
-
-echo "alias k='kubectl'" >> ~/.zshrc
-
-# Perhaps try out https://github.com/derailed/popeye
-```
-
-Then add the plugin `kubectl` to `~/.zshrc`
-
 ## Upgrading
 
 ```bash
