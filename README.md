@@ -1,4 +1,5 @@
 # Provision my MacBook Pro
+This file contains the steps I take to provision my MacBook Pro. It is a work in progress and will change over time.
 
 ## Generic provisioning
 
@@ -136,7 +137,7 @@ echo "autoload -Uz compinit && compinit" >> ~/.zshrc
 # Allow comments in the command line
 echo "setopt interactivecomments" >> ~/.zshrc
 
-# Now restart the terminal or source ~/.zshrc
+# Now restart the terminal
 ```
 
 ## Some apps
@@ -180,10 +181,8 @@ wget
 mas install 1477089520 # Backtrack
 mas install 1370791134 # DigiDoc4 Client
 mas install 668208984  # Giphy capture
-#mas install 1319778037 # iStat Menus
 mas install 1480068668 # Messenger
 mas install 1529448980 # Reeder
-#mas install 803453959  # Slack
 mas install 1176895641 # Spark
 mas install 425424353  # The Unarchiver
 mas install 966085870  # Ticktick
@@ -212,29 +211,6 @@ brew install --cask quicklook-json
 ### SSH stuffs
 
 ```bash
-# Upgrade ssh to be able to use ed25519-sk
-
-brew install openssh
-launchctl disable user/$UID/com.openssh.ssh-agent
-cat <<'EOF' >> ~/Library/LaunchAgents/com.zerowidth.launched.ssh_agent.plist
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-  <key>Label</key>
-  <string>com.zerowidth.launched.ssh_agent</string>
-  <key>ProgramArguments</key>
-  <array>
-    <string>sh</string>
-    <string>-c</string>
-    <string>/usr/local/bin/ssh-agent -D -a ~/.ssh/agent</string>
-  </array>
-  <key>RunAtLoad</key>
-  <true/>
-</dict>
-</plist>
-EOF
-launchctl load -w ~/Library/LaunchAgents/com.zerowidth.launched.ssh_agent.plist
 
 # Configure ssh to store passwords in keychain and add some default keys
 cat <<'EOF' >> ~/.ssh/config
