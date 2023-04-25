@@ -153,6 +153,7 @@ grandperspective \
 handbrake \
 iina \
 iterm2  \
+# maccy \
 numi \
 ocenaudio \
 rectangle \
