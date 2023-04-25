@@ -128,6 +128,8 @@ echo "source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/
 
 brew install zsh-history-substring-search
 echo "source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh" >> ~/.zshrc
+# Make up/down arrows work
+echo "bindkey '^[[A' history-substring-search-up && bindkey '^[[B' history-substring-search-down" >> ~/.zshrc
 
 # Enable autocomplete
 echo "autoload -Uz compinit && compinit" >> ~/.zshrc
