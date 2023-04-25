@@ -254,7 +254,6 @@ EOF
 
 ```bash
 cat <<'EOF' >> ~/.zshrc
-alias pls="sudo"
 alias ls="ls -haln"
 
 # git
@@ -467,40 +466,10 @@ EOF
 source ~/.zshrc
 ```
 
-## Node and friends
+## Node
 
 ```bash
 brew install node
-```
-
-Then add the plugin `npm` to `~/.zshrc`
-
-## React native
-
- Make sure Node and friends are installed (see above).
-
-```bash
-echo "alias react-native='npx react-native'" >> ~/.zshrc
-brew install watchman
-```
-
-### iOS SDK
-
-```bash
-mas install 497799835 # Xcode
-brew install cocoapods
-```
-
-### Android SDK
-
-```bash
-brew install --cask android-sdk
-echo "export ANDROID_SDK_ROOT='/usr/local/share/android-sdk'" >> ~/.zshrc
-source ~/.zshrc
-# sdkmanager requires java 8!
-javaopenjdk 8
-sdkmanager --update
-sdkmanager "platform-tools" "platforms;android-30" "system-images;android-29;default;x86_64" "build-tools;30.0.3"
 ```
 
 ## Upgrading
@@ -520,10 +489,4 @@ rustup self update; rustup update; \
 npm update -g; \
 # Python
 python -m pip install --upgrade pip; pip-review --local --auto; \
-
-# sdkmanager
-javaopenjdk 8
-sdkmanager --update
-sdkmanager --list #to check what's new
-sdkmanager "platform-tools" "platforms;android-XX" "system-images;android-XX;default;x86_64" "build-tools;XX.X.X" # Replace X with newer versions
 ```
