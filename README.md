@@ -78,7 +78,7 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.dock expose-animation-duration -float 0.1
 defaults write com.apple.dock "expose-group-by-app" -bool true
 
-# Enable App Exposé                                                                                                       12:18:00
+# Enable App Exposé
 # Swipe down with three/four fingers
 defaults write com.apple.dock showAppExposeGestureEnabled -bool true
 
