@@ -99,6 +99,9 @@ defaults write com.apple.dock tilesize -int 36
 # Preventing Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
+# Disable gamepad controller mapped to Launchpad
+defaults write com.apple.GameController bluetoothPrefsMenuLongPressAction -integer 0
+
 # restart finder to apply finder things
 killall Finder
 # restart dock to apply dock things
