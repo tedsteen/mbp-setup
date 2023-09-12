@@ -121,8 +121,8 @@ echo "/opt/homebrew/bin/zsh" | sudo tee -a /etc/shells > /dev/null
 # Switch to new zsh
 chsh -s /opt/homebrew/bin/zsh
 
-brew install romkatv/powerlevel10k/powerlevel10k
-echo "source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
+brew install powerlevel10k
+echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
 
 brew install zsh-syntax-highlighting
 echo "source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
