@@ -6,7 +6,7 @@ This file contains the steps I take to provision my MacBook Pro. It is a work in
 Get the Svorak keyboard layout in place
 
 ```bash
-sudo curl "https://gitlab.com/tedsteen/env/-/raw/master/Swedish-Svorak.keylayout?inline=false" -o "/Library/Keyboard Layouts/Swedish-Svorak.keylayout"
+sudo curl -L "https://github.com/tedsteen/mbp-setup/raw/master/Swedish-Svorak.keylayout" -o "/Library/Keyboard Layouts/Swedish-Svorak.keylayout"
 ```
 
 Based on many things but most recently [this article](https://betterprogramming.pub/how-to-set-up-your-macbook-for-web-development-in-2021-a7a1f53f6462).
