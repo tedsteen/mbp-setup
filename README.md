@@ -3,29 +3,70 @@ This file contains the steps I take to provision my MacBook Pro. It is a work in
 
 ## Generic provisioning
 
-Get the Svorak keyboard layout in place
+Getting up and running
 
 ```bash
+# Get the Svorak keyboard layout in place
 sudo curl -L "https://github.com/tedsteen/mbp-setup/raw/master/Swedish-Svorak.keylayout" -o "/Library/Keyboard Layouts/Swedish-Svorak.keylayout"
+ 
+# Setup the random SSH key
+mkdir -m 700 ~/.ssh
+echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFsgdn22Z0Y4yMT2TITZ3KzkGcmZR2Uc3TDzLp9wr4P1 ted@random" > ~/.ssh/random.pub; chmod 644 ~/.ssh/random.pub
+touch ~/.ssh/random; chmod 600 ~/.ssh/random
+ssh-add ~/.ssh/random
+
+# Configure ssh to store passwords in keychain and add the random key as default
+cat <<'EOF' >> ~/.ssh/config
+Host *
+  IgnoreUnknown UseKeychain
+  UseKeychain yes
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/random
+  IdentitiesOnly yes
+EOF
+
+# Upgrade macOS to latest everything
+softwareupdate --all --install --force
+# Install developer tools
+xcode-select --install
+# Upgrade macOS to latest everything again just to be sure...
+softwareupdate --all --install --force
+
+#Install Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Better terminal
+brew install --cask iterm2
+
+# Git config
+git config --global user.name "Ted Steen"
+git config --global user.email "ted.steen@gmail.com"
+git config --global color.ui auto
+git config --global pull.rebase false
+git config --global fetch.prune true
+git config --global push.autoSetupRemote true
+
+cat <<'EOF' >> ~/.zshrc
+alias gs="git status"
+alias ga="git add"
+alias gaa="git add -A"
+alias gc="git commit -m"
+alias gd="git diff HEAD"
+alias go="git push -u origin"
+alias gco="git checkout"
+# Pretty git log
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+# All local branches in the order of their last commit
+alias gb="git for-each-ref --sort='-authordate:iso8601' --format=' %(color:green)%(authordate:iso8601)%09%(color:white)%(refname:short)' refs/heads"
+alias gnuke="git reset --hard; git clean -fd"
+EOF
+
 ```
 
 Based on many things but most recently [this article](https://betterprogramming.pub/how-to-set-up-your-macbook-for-web-development-in-2021-a7a1f53f6462).
 
-First upgrade macOS to latest everything
 
-```bash
-softwareupdate --all --install --force
-```
-
-and then install developer tools
-
-```bash
-xcode-select --install
-```
-
-then upgrade macOS to latest everything again just to be sure...
-
-Next set some system preferences
+Set some system preferences
 
 ```bash
 # Make it possible to authenticate with Touch ID for sudo
@@ -106,10 +147,7 @@ defaults write com.apple.GameController bluetoothPrefsMenuLongPressAction -integ
 killall Finder
 # restart dock to apply dock things
 killall Dock
-
 ```
-
-Install [homebrew](https://brew.sh)  
 
 ## Setup the terminal
 
@@ -125,13 +163,13 @@ brew install powerlevel10k
 echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
 
 brew install zsh-syntax-highlighting
-echo "source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+echo "source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 
 brew install zsh-autosuggestions
-echo "source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+echo "source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 
 brew install zsh-history-substring-search
-echo "source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh" >> ~/.zshrc
+echo "source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh" >> ~/.zshrc
 # Make up/down arrows work
 echo "bindkey '^[[A' history-substring-search-up && bindkey '^[[B' history-substring-search-down" >> ~/.zshrc
 
@@ -140,6 +178,21 @@ echo "autoload -Uz compinit && compinit" >> ~/.zshrc
 # Allow comments in the command line
 echo "setopt interactivecomments" >> ~/.zshrc
 
+cat <<'EOF' >> ~/.zshrc
+# This speeds up pasting w/ autosuggest
+# https://github.com/zsh-users/zsh-autosuggestions/issues/238
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+EOF
+
 # Now restart the terminal
 ```
 
@@ -147,17 +200,15 @@ echo "setopt interactivecomments" >> ~/.zshrc
 
 ```bash
 brew install --cask \
-brave-browser \
+arc \
 discord \
 docker \
-# dozer \
 balenaetcher \
 google-drive \
 grandperspective \
 handbrake \
 iina \
 iterm2  \
-# maccy \
 numi \
 ocenaudio \
 rectangle \
@@ -165,7 +216,6 @@ signal \
 spotify \
 stats \
 transmission \
-virtualbox \
 visual-studio-code \
 workflowy
 
@@ -181,18 +231,18 @@ tldr \
 watch \
 wget
 
-mas install 1477089520 # Backtrack
+# mas install 1477089520 # Backtrack
 mas install 1370791134 # DigiDoc4 Client
-mas install 668208984  # Giphy capture
+# mas install 668208984  # Giphy capture
 mas install 1480068668 # Messenger
-mas install 1529448980 # Reeder
-mas install 1176895641 # Spark
+# mas install 1529448980 # Reeder
+# mas install 1176895641 # Spark
 mas install 425424353  # The Unarchiver
 mas install 966085870  # Ticktick
 mas install 1147396723 # WhatsApp
-mas install 1320666476 # Wipr
+# mas install 1320666476 # Wipr
 mas install 1451685025 # Wireguard
-mas install 1497506650 # Yubico Authenticator
+# mas install 1497506650 # Yubico Authenticator
 ```
 
 ## Manually install
@@ -211,67 +261,11 @@ mas install 1497506650 # Yubico Authenticator
 brew install --cask quicklook-json
 ```
 
-### SSH stuffs
-
-```bash
-
-# Configure ssh to store passwords in keychain and add some default keys
-cat <<'EOF' >> ~/.ssh/config
-Host *
-  IgnoreUnknown UseKeychain
-  UseKeychain yes
-  AddKeysToAgent yes
-  IdentityFile ~/.ssh/random
-  IdentitiesOnly yes
-
-Host rp.marati4-20.s3n.io
-  IdentityFile ~/.ssh/rp_yubikey_17118171
-
-Host gitlab
-  HostName gitlab.com
-  User git
-  IdentityFile ~/.ssh/random
-  IdentitiesOnly yes
-EOF
-
-cat <<'EOF' >> ~/.zshrc
-make_key() {
-  name=$1
-  kdfs=${2:-100}
-  type=${3:-ed25519}
-  keyfilename=~/.ssh/$name
-  
-  ssh-keygen -a $kdfs -t $type -f $keyfilename -C "${name}"
-}
-
-make_key_yubikey() {
-    name=$1_yubikey_$2
-    kdfs=${3:-100}
-    keyfilename=~/.ssh/$name
-    ssh-keygen -a $kdfs -t ed25519-sk -f $keyfilename -C "${name}"
-}
-EOF
-```
-
 ### Other small things
 
 ```bash
 cat <<'EOF' >> ~/.zshrc
 alias ls="ls -haln"
-
-# git
-alias gs="git status"
-alias ga="git add"
-alias gaa="git add -A"
-alias gc="git commit -m"
-alias gd="git diff HEAD"
-alias go="git push -u origin"
-alias gco="git checkout"
-# Pretty git log
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-# All local branches in the order of their last commit
-alias gb="git for-each-ref --sort='-authordate:iso8601' --format=' %(color:green)%(authordate:iso8601)%09%(color:white)%(refname:short)' refs/heads"
-alias gnuke="git reset --hard; git clean -fd"
 
 # docker
 # Delete all stopped containers (including data-only containers)
@@ -329,30 +323,23 @@ dev-here() {
   eval $cmd
 }
 
-# This speeds up pasting w/ autosuggest
-# https://github.com/zsh-users/zsh-autosuggestions/issues/238
-pasteinit() {
-  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
-  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+make_key() {
+  name=$1
+  kdfs=${2:-100}
+  type=${3:-ed25519}
+  keyfilename=~/.ssh/$name
+  
+  ssh-keygen -a $kdfs -t $type -f $keyfilename -C "${name}"
 }
 
-pastefinish() {
-  zle -N self-insert $OLD_SELF_INSERT
+make_key_yubikey() {
+    name=$1_yubikey_$2
+    kdfs=${3:-100}
+    keyfilename=~/.ssh/$name
+    ssh-keygen -a $kdfs -t ed25519-sk -f $keyfilename -C "${name}"
 }
-zstyle :bracketed-paste-magic paste-init pasteinit
-zstyle :bracketed-paste-magic paste-finish pastefinish
+
 EOF
-```
-
-## Git
-
-```bash
-git config --global user.name "Ted Steen"
-git config --global user.email "ted.steen@gmail.com"
-git config --global color.ui auto
-git config --global pull.rebase false
-git config --global fetch.prune true
-git config --global push.autoSetupRemote true
 ```
 
 ## Python
@@ -367,8 +354,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH" 
 eval "$(pyenv init --path)" 
 eval "$(pyenv init -)"
-# Fixes `brew doctor` warning, see https://github.com/pyenv/pyenv#homebrew-in-macos 
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 ' >> ~/.zshrc
 
 pip install pip-review
