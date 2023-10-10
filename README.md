@@ -209,6 +209,7 @@ grandperspective \
 handbrake \
 iina \
 iterm2  \
+mullvadvpn \
 numi \
 ocenaudio \
 rectangle \
