@@ -234,7 +234,6 @@ wget
 
 # mas install 1477089520 # Backtrack
 mas install 1370791134 # DigiDoc4 Client
-# mas install 668208984  # Giphy capture
 mas install 1480068668 # Messenger
 # mas install 1529448980 # Reeder
 # mas install 1176895641 # Spark
@@ -254,6 +253,7 @@ mas install 1451685025 # Wireguard
 * [Loopback Audio](https://rogueamoeba.com/loopback/)
 * [Sketchup (online no install)](https://app.sketchup.com/)
 * [Wondershare FilmoraPro](https://filmora.wondershare.com/filmorapro-video-editor/)
+* [Gifox](https://gifox.app/)
 * TODO: [LittleSnitch](https://www.obdev.at/products/littlesnitch/index.html)?
 
 ## Some quick look plugins
