@@ -185,7 +185,8 @@ signal \
 spotify \
 stats \
 transmission \
-visual-studio-code
+visual-studio-code \
+whisky
 
 brew install \
 age \
