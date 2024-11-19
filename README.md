@@ -121,48 +121,25 @@ killall Dock
 ## Setup the terminal
 
 ```bash
-# Install latest zsh
-brew install zsh
-# Allow to use homebrews zsh as shell
-echo "/opt/homebrew/bin/zsh" | sudo tee -a /etc/shells > /dev/null
-# Switch to new zsh
-chsh -s /opt/homebrew/bin/zsh
+# Get a nice font and install in iTerm2
+https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/0xProto.zip
 
-brew install powerlevel10k
-echo "source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
+brew install starship
+echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 
-brew install zsh-syntax-highlighting
-echo "source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+# Install zinit
+bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
 
-brew install zsh-autosuggestions
-echo "source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
-
-brew install zsh-history-substring-search
-echo "source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh" >> ~/.zshrc
-# Make up/down arrows work
+echo "zinit light zdharma-continuum/fast-syntax-highlighting" >> ~/.zshrc
+echo "zinit light zsh-users/zsh-autosuggestions" >> ~/.zshrc
+echo "zinit light marlonrichert/zsh-autocomplete" >> ~/.zshrc
+echo "zinit light MichaelAquilina/zsh-you-should-use" >> ~/.zshrc
+echo "zinit light zsh-users/zsh-history-substring-search" >> ~/.zshrc
+# Make up/down arrows for zsh-history-substring-search work
 echo "bindkey '^[[A' history-substring-search-up && bindkey '^[[B' history-substring-search-down" >> ~/.zshrc
-
-# Enable autocomplete
-echo "autoload -Uz compinit && compinit" >> ~/.zshrc
-# Allow comments in the command line
 echo "setopt interactivecomments" >> ~/.zshrc
-
-cat <<'EOF' >> ~/.zshrc
-# This speeds up pasting w/ autosuggest
-# https://github.com/zsh-users/zsh-autosuggestions/issues/238
-pasteinit() {
-  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
-  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
-}
-
-pastefinish() {
-  zle -N self-insert $OLD_SELF_INSERT
-}
-zstyle :bracketed-paste-magic paste-init pasteinit
-zstyle :bracketed-paste-magic paste-finish pastefinish
-EOF
-
-# Now restart the terminal
+# Now restart the terminal or run
+source ~/.zshrc
 ```
 
 ## Some apps
