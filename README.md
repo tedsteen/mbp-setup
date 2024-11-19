@@ -45,26 +45,7 @@ git config --global color.ui auto
 git config --global pull.rebase false
 git config --global fetch.prune true
 git config --global push.autoSetupRemote true
-
-cat <<'EOF' >> ~/.zshrc
-alias gs="git status"
-alias ga="git add"
-alias gaa="git add -A"
-alias gc="git commit -m"
-alias gd="git diff HEAD"
-alias go="git push -u origin"
-alias gco="git checkout"
-# Pretty git log
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-# All local branches in the order of their last commit
-alias gb="git for-each-ref --sort='-authordate:iso8601' --format=' %(color:green)%(authordate:iso8601)%09%(color:white)%(refname:short)' refs/heads"
-alias gnuke="git reset --hard; git clean -fd"
-EOF
-
 ```
-
-Based on many things but most recently [this article](https://betterprogramming.pub/how-to-set-up-your-macbook-for-web-development-in-2021-a7a1f53f6462).
-
 
 Set some system preferences
 
@@ -138,6 +119,23 @@ echo "zinit light zsh-users/zsh-history-substring-search" >> ~/.zshrc
 # Make up/down arrows for zsh-history-substring-search work
 echo "bindkey '^[[A' history-substring-search-up && bindkey '^[[B' history-substring-search-down" >> ~/.zshrc
 echo "setopt interactivecomments" >> ~/.zshrc
+
+# Some git aliases
+cat <<'EOF' >> ~/.zshrc
+alias gs="git status"
+alias ga="git add"
+alias gaa="git add -A"
+alias gc="git commit -m"
+alias gd="git diff HEAD"
+alias go="git push -u origin"
+alias gco="git checkout"
+# Pretty git log
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+# All local branches in the order of their last commit
+alias gb="git for-each-ref --sort='-authordate:iso8601' --format=' %(color:green)%(authordate:iso8601)%09%(color:white)%(refname:short)' refs/heads"
+alias gnuke="git reset --hard; git clean -fd"
+EOF
+
 # Now restart the terminal or run
 source ~/.zshrc
 ```
