@@ -148,6 +148,7 @@ arc \
 discord \
 docker \
 balenaetcher \
+gifox \
 google-drive \
 grandperspective \
 handbrake \
@@ -192,7 +193,6 @@ mas install 1451685025 # Wireguard
 * [Loopback Audio](https://rogueamoeba.com/loopback/)
 * [Sketchup (online no install)](https://app.sketchup.com/)
 * [Wondershare FilmoraPro](https://filmora.wondershare.com/filmorapro-video-editor/)
-* [Gifox](https://gifox.app/)
 * TODO: [LittleSnitch](https://www.obdev.at/products/littlesnitch/index.html)?
 
 ## Some quick look plugins
@@ -250,16 +250,16 @@ EOF
 ```bash
 brew install pyenv
 pyenv install --list # See available versions
-pyenv install <version>
-pyenv global <version> # Set global version
+pyenv install <version> # f.ex `pyenv install 3.13`
+pyenv global <version> # f.ex `pyenv global 3.13`
 echo -e '
-export PYENV_ROOT="$HOME/.pyenv" 
-export PATH="$PYENV_ROOT/bin:$PATH" 
-eval "$(pyenv init --path)" 
+# export PYENV_ROOT="$HOME/.pyenv" 
+# export PATH="$PYENV_ROOT/bin:$PATH" 
+# eval "$(pyenv init --path)" 
 eval "$(pyenv init -)"
 ' >> ~/.zshrc
 
-pip install pip-review
+#pip install pip-review
 ```
 
 ## Ruby
