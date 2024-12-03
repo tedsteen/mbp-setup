@@ -329,6 +329,8 @@ mas upgrade; \
 rustup self update; rustup update; \
 # Node
 npm update -g; \
+# Zinit
+zinit self-update; zinit update --all; \
 # Python
 python -m pip install --upgrade pip; pip-review --local --auto; \
 ```
