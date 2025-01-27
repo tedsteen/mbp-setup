@@ -144,7 +144,6 @@ source ~/.zshrc
 
 ```bash
 brew install --cask \
-arc \
 discord \
 docker \
 balenaetcher \
