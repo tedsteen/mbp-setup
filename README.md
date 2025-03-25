@@ -133,7 +133,7 @@ alias gco="git checkout"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 # All local branches in the order of their last commit
 alias gb="git for-each-ref --sort='-authordate:iso8601' --format=' %(color:green)%(authordate:iso8601)%09%(color:white)%(refname:short)' refs/heads"
-alias gnuke="git reset --hard; git clean -fd"
+alias gnuke="git reset --hard; git clean -fdx"
 EOF
 
 # Now restart the terminal or run
