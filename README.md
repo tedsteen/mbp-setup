@@ -160,8 +160,7 @@ signal \
 spotify \
 stats \
 transmission \
-visual-studio-code \
-whisky
+visual-studio-code
 
 brew install \
 age \
@@ -193,6 +192,7 @@ mas install 1451685025 # Wireguard
 * [Sketchup (online no install)](https://app.sketchup.com/)
 * [Wondershare FilmoraPro](https://filmora.wondershare.com/filmorapro-video-editor/)
 * TODO: [LittleSnitch](https://www.obdev.at/products/littlesnitch/index.html)?
+* TODO: Check out [CrossOver](https://www.codeweavers.com/store/) as a replacement for Whisky
 
 ## Some quick look plugins
 
