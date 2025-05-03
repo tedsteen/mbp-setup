@@ -22,7 +22,6 @@ Host *
   UseKeychain yes
   AddKeysToAgent yes
   IdentityFile ~/.ssh/random
-  IdentitiesOnly yes
 EOF
 
 # Upgrade macOS to latest everything
